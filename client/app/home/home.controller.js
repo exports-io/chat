@@ -19,6 +19,9 @@ angular.module('chatApp')
       if ($scope.message === '') {
         return;
       }
+
+      socket.socket.emit('im:stopTyping');
+
       var tempMsg = {
         user: $scope.currentUser.name,
         text: $scope.inputText,
@@ -33,23 +36,27 @@ angular.module('chatApp')
 
 
     socket.socket.on('im:isTyping', function (data) {
-      if (data._id !== $scope.currentUser._id) {
-        $scope.isTyping = true;
-        $scope.userTyping = data;
-      }
+      $scope.isTyping = true;
+      $scope.userTyping = data;
     });
 
     socket.socket.on('im:stopTyping', function () {
       $scope.isTyping = false;
     });
 
+    var timeout = null;
     $scope.setTyping = function () {
       var obj = $scope.currentUser;
 
       socket.socket.emit('im:isTyping', obj);
-      $timeout(function () {
+
+      if (timeout) {
+        $timeout.cancel(timeout);
+      }
+
+      timeout = $timeout(function () {
         socket.socket.emit('im:stopTyping');
-      }, 10000);
+      }, 5000);
     };
 
 

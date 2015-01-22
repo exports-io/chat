@@ -15,13 +15,11 @@ exports.register = function (socket) {
   });
 
   socket.on("im:isTyping", function (data) {
-    console.log(data);
-    socket.emit("im:isTyping", data);
+    socket.broadcast.emit("im:isTyping", data);
   });
 
   socket.on("im:stopTyping", function (data) {
-    console.log(data);
-    socket.emit("im:stopTyping", data);
+    socket.broadcast.emit("im:stopTyping", data);
   });
 
 };
