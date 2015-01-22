@@ -15,13 +15,14 @@
     <ul class="sidebar">
       <li class="sidebar-main"><a>Exports.io</a></li>
       <li class="sidebar-title"><span>Channels</span></li>
-      <li class="sidebar-list"><a href="#"># Random</a></li>
+      <li class="sidebar-list"><a href="#/tables># Random</a></li>
       <li class="sidebar-list"><a href="#/tables"># General</a></li>
       <li class="sidebar-list"><a href="#/software"># Software</a></li>
       <li><br></li>
       <li class="sidebar-title"><span>Direct Messages</span></li>
-      <li class="sidebar-list"><a href="#">Marco</a></li>
-      <li class="sidebar-list"><a href="#/tables">Paolo</a></li>
+      <li class="sidebar-list" ng-repeat="user in users">
+        <a href="#"><i class="fa fa-circle presence_icon" ng-class="{connected: 'icon-green'}"></i><span>{{user.name}}</span></a>
+      </li>
       <li><br></li>
       <li class="sidebar-title"><span>Private Groups</span></li>
       <li class="sidebar-list"><a href="#">Senior Executives</a></li>

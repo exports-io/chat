@@ -18,6 +18,7 @@ function onConnect(socket) {
   });
 
   // Insert sockets below
+  require('../api/channel/channel.socket').register(socket);
   require('../api/im/im.socket').register(socket);
   require('../api/thing/thing.socket').register(socket);
 }
@@ -40,8 +41,8 @@ module.exports = function (socketio) {
 
   socketio.on('connection', function (socket) {
     socket.address = socket.handshake.address !== null ?
-            socket.handshake.address.address + ':' + socket.handshake.address.port :
-            process.env.DOMAIN;
+    socket.handshake.address.address + ':' + socket.handshake.address.port :
+      process.env.DOMAIN;
 
     socket.connectedAt = new Date();
 
