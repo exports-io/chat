@@ -1,5 +1,16 @@
 <div class="page-wrapper">
 
+  <div class="row header">
+    <div class="col-xs-12">
+      <div class="meta">
+        <div class="page">
+          # general
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <div id="sidebar-wrapper">
     <ul class="sidebar">
       <li class="sidebar-main"><a>Exports.io</a></li>
@@ -17,58 +28,38 @@
       <li class="sidebar-list"><a href="#/tables">Trustees</a></li>
     </ul>
 
-
     <div class="sidebar-footer">
-      <div class="col-xs-4">
-        <a href="#" target="">
-          Github
-        </a>
-      </div>
-      <div class="col-xs-4">
-        <a href="#" target="_blank">
-          About
-        </a>
-      </div>
-      <div class="col-xs-4">
-        <a href="#">
-          Support
-        </a>
+      <div class="current-user">
+        <!--<img class="current-user-avatar">-->
+        <span class="current-user-name">Paolo Bernasconi</span>
+        <span class="current-user-status">online</span>
       </div>
     </div>
   </div>
 
-  <div id="content-wrapper">
-    <div class="row header">
+
+  <div id="content-wrapper" scroll-glue="scrollDown">
+    <div class="row">
       <div class="col-xs-12">
-        <div class="meta">
-          <div class="page">
-            # general
+        <div class="message-content">
+          <div class="message-group" ng-repeat="msg in messages">
+            <a class="message-sender">{{msg.user}}</a>
+            <span class="message-ts">{{msg.ts | date:'shortTime'}}</span>
+            <a class="message-text">{{msg.text}}</a>
           </div>
         </div>
-      </div>
-    </div>
-
-    <div class="page-content">
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="message-content">
-            <div class="message-group" ng-repeat="msg in messages">
-              <a class="message-sender">{{msg.user}}</a>
-              <span class="message-ts">{{msg.ts | date:'shortTime'}}</span>
-              <a class="message-text">{{msg.text}}</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="textfield-footer">
-      <div>
-        <form ng-submit="sendMessage(inputText)">
-          <input ng-model="inputText">
-        </form>
       </div>
     </div>
   </div>
+
+
+  <div class="textfield-footer">
+    <div>
+      <form ng-submit="sendMessage(inputText)">
+        <input ng-model="inputText">
+      </form>
+    </div>
+  </div>
+
 
 </div>

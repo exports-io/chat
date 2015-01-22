@@ -2,8 +2,9 @@
 
 angular.module('chatApp')
   .controller('HomeCtrl', function ($scope, $http, socket) {
-    $scope.inputText = "";
+    $scope.inputText = '';
     $scope.messages = [];
+    $scope.scrollDown = true;
 
     $http.get('/api/ims').success(function (results) {
       $scope.messages = results;
@@ -15,14 +16,15 @@ angular.module('chatApp')
         return;
       }
       var tempMsg = {
-        user: "tmp",
+        user: 'tmp',
         text: $scope.inputText,
-        type: "message",
+        type: 'message',
         ts: new Date()
       };
 
       $http.post('/api/ims', tempMsg);
-      $scope.inputText = "";
+      $scope.inputText = '';
+      $scope.scrollDown = true;
     };
 
     $scope.$on('$destroy', function () {

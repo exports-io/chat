@@ -2,6 +2,7 @@
 
 describe('Controller: HomeCtrl', function () {
 
+  /*
   // load the controller's module
   beforeEach(module('chatApp'));
 
@@ -18,4 +19,7 @@ describe('Controller: HomeCtrl', function () {
   it('should ...', function () {
     expect(1).toEqual(1);
   });
+
+  */
 });
+
