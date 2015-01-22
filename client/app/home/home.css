@@ -133,7 +133,7 @@ ul.sidebar .sidebar-list .menu-icon {
 
 .sidebar-footer {
   position: absolute;
-  height: 60px;
+  height: 80px;
   bottom: 0;
   width: 100%;
   padding: 0;
@@ -197,7 +197,7 @@ ul.sidebar .sidebar-list .menu-icon {
   left: 250px;
   margin-top: 60px;
   margin-bottom: 60px;
-  height: calc(100% - 120px);
+  height: calc(100% - 140px);
   box-sizing: border-box;
   overflow-y: auto;
   z-index: 100;
@@ -242,7 +242,7 @@ a.message-sender {
 
 .textfield-footer {
   position: fixed;
-  height: 60px;
+  height: 80px;
   bottom: 0;
   padding: 0px;
   left: 250px;
@@ -268,4 +268,11 @@ a.message-sender {
 .textfield-footer input:focus,
 .textfield-footer input:active {
   outline: none;
+}
+
+
+.isTyping {
+  color: #929292;
+  font-size: 12px;
+  font-style: italic;
 }

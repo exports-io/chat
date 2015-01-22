@@ -31,7 +31,7 @@
     <div class="sidebar-footer">
       <div class="current-user">
         <!--<img class="current-user-avatar">-->
-        <span class="current-user-name">Paolo Bernasconi</span>
+        <span class="current-user-name">{{currentUser.name}}</span>
         <span class="current-user-status">online</span>
       </div>
     </div>
@@ -53,12 +53,17 @@
   </div>
 
 
+
+
+
   <div class="textfield-footer">
     <div>
       <form ng-submit="sendMessage(inputText)">
-        <input ng-model="inputText">
+        <input ng-model="inputText" ng-change="setTyping()">
       </form>
+      <span class="isTyping" ng-if="isTyping">{{userTyping.name}} is Typing ...</span>
     </div>
+
   </div>
 
 

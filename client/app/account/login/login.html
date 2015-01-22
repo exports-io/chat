@@ -4,7 +4,9 @@
   <div class="row">
     <div class="col-sm-12">
       <h1>Login</h1>
+
       <p>Accounts are reset on server restart from <code>server/config/seed.js</code>. Default account is <code>test@test.com</code> / <code>test</code></p>
+
       <p>Admin account is <code>admin@admin.com</code> / <code>admin</code></p>
     </div>
     <div class="col-sm-12">
@@ -24,10 +26,11 @@
 
         <div class="form-group has-error">
           <p class="help-block" ng-show="form.email.$error.required && form.password.$error.required && submitted">
-             Please enter your email and password.
+            Please enter your email and password.
           </p>
+
           <p class="help-block" ng-show="form.email.$error.email && submitted">
-             Please enter a valid email.
+            Please enter a valid email.
           </p>
 
           <p class="help-block">{{ errors.other }}</p>

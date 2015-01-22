@@ -6,14 +6,25 @@
 
 var Im = require('./im.model');
 
-exports.register = function(socket) {
+exports.register = function (socket) {
   Im.schema.post('save', function (doc) {
     onSave(socket, doc);
   });
   Im.schema.post('remove', function (doc) {
     onRemove(socket, doc);
   });
-}
+
+  socket.on("im:isTyping", function (data) {
+    console.log(data);
+    socket.emit("im:isTyping", data);
+  });
+
+  socket.on("im:stopTyping", function (data) {
+    console.log(data);
+    socket.emit("im:stopTyping", data);
+  });
+
+};
 
 function onSave(socket, doc, cb) {
   socket.emit('im:save', doc);
