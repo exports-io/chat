@@ -16,7 +16,7 @@ angular.module('chatApp')
     });
 
     $scope.sendMessage = function () {
-      if ($scope.message === '') {
+      if ($scope.inputText === '') {
         return;
       }
 

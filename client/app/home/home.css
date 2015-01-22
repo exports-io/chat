@@ -40,7 +40,7 @@ a:active {
 .page-wrapper {
   height: 100%;
   padding-left: 250px;
-  overflow: auto;
+  overflow-y: auto;
 }
 
 /*
@@ -142,8 +142,7 @@ ul.sidebar .sidebar-list .menu-icon {
   color: #ffffff;
 }
 
-
-.sidebar-footer .current-user-name{
+.sidebar-footer .current-user-name {
   display: block;
   margin-left: 50px;
   font-size: 16px;
@@ -152,7 +151,7 @@ ul.sidebar .sidebar-list .menu-icon {
   padding-top: 10px;
 }
 
-.sidebar-footer .current-user-status{
+.sidebar-footer .current-user-status {
   display: block;
   margin-left: 50px;
   font-weight: 300;
@@ -199,7 +198,7 @@ ul.sidebar .sidebar-list .menu-icon {
   margin-bottom: 60px;
   height: calc(100% - 140px);
   box-sizing: border-box;
-  overflow-y: auto;
+  overflow-y: scroll;
   z-index: 100;
 }
 
@@ -270,9 +269,12 @@ a.message-sender {
   outline: none;
 }
 
-
 .isTyping {
   color: #929292;
   font-size: 12px;
   font-style: italic;
+}
+
+.isType-name {
+  font-weight: bolder;
 }
