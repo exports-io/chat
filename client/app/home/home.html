@@ -53,17 +53,13 @@
   </div>
 
 
-
-
-
   <div class="textfield-footer">
     <div>
       <form ng-submit="sendMessage(inputText)">
         <input ng-model="inputText" ng-change="setTyping()">
       </form>
-      <span class="isTyping" ng-if="isTyping">{{userTyping.name}} is Typing ...</span>
+      <span class="isTyping" ng-if="isTyping">{{userTyping.name}} is typing ...</span>
     </div>
-
   </div>
 
 
