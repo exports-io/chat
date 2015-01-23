@@ -10,8 +10,7 @@ angular.module('chatApp', [
   'luegg.directives'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
-    $urlRouterProvider
-      .otherwise('/login');
+    $urlRouterProvider.otherwise('/messages/general');
 
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('authInterceptor');
@@ -54,7 +53,7 @@ angular.module('chatApp', [
     });
 
 
-    socket.socket.on("isConnected", function () {
+    socket.socket.on('isConnected', function () {
       $rootScope.isConnected = true;
-    })
+    });
   });

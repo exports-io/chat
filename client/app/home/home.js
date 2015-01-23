@@ -3,10 +3,24 @@
 angular.module('chatApp')
   .config(function ($stateProvider) {
     $stateProvider
-      .state('home', {
+
+      .state('index', {
         url: '/',
-        templateUrl: 'app/home/home.html',
-        controller: 'HomeCtrl',
-        authenticate: true
+        views: {
+          '': {
+            templateUrl: 'app/home/messages.html',
+            controller: 'HomeCtrl'
+          }
+        }
+      })
+
+      .state('index.messages', {
+        url: 'messages/{channel}',
+        views: {
+          'content@index': {
+            templateUrl: 'app/home/content.html',
+            controller: 'ContentCtrl'
+          }
+        }
       });
   });
