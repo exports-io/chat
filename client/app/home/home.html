@@ -1,16 +1,5 @@
 <div class="page-wrapper">
 
-  <div class="row header">
-    <div class="col-xs-12">
-      <div class="meta">
-        <div class="page">
-          # general
-        </div>
-      </div>
-    </div>
-  </div>
-
-
   <div id="sidebar-wrapper">
     <ul class="sidebar">
       <li class="sidebar-main"><a>Exports.io</a></li>
@@ -20,12 +9,11 @@
         <a ui-sref="index.channel({ channelName : {{channel.name}} })"># {{channel.name}}</a>
       </li>
 
-      <li><br></li>
       <li class="sidebar-title"><span>Direct Messages</span></li>
       <li class="sidebar-list" ng-repeat="user in users">
         <a href="#"><i class="fa fa-circle presence_icon" ng-class="{connected: 'icon-green'}"></i><span>{{user.name}}</span></a>
       </li>
-      <li><br></li>
+
       <li class="sidebar-title"><span>Private Groups</span></li>
       <li class="sidebar-list"><a href="#">Senior Executives</a></li>
       <li class="sidebar-list"><a href="#/tables">Trustees</a></li>

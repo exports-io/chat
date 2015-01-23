@@ -35,7 +35,7 @@ a:active {
 
 .page-wrapper {
   height: 100%;
-  padding-left: 250px;
+  padding-left: 220px;
   overflow-y: auto;
 }
 
@@ -44,11 +44,11 @@ a:active {
  */
 
 #sidebar-wrapper {
-  margin-left: -250px;
-  width: 250px;
+  margin-left: -220px;
+  width: 220px;
   top: 0;
   background: #30426a;
-  left: 250px;
+  left: 220px;
   position: fixed;
   height: 100%;
   z-index: 999;
@@ -73,7 +73,7 @@ ol, ul {
 }
 
 ul.sidebar .sidebar-main {
-  height: 65px;
+  height: 50px;
 }
 
 ul.sidebar .sidebar-title {
@@ -101,13 +101,13 @@ ul.sidebar li a {
   display: block;
   float: left;
   text-decoration: none;
-  width: 250px;
+  width: 220px;
   text-align: left;
 }
 
 ul.sidebar .sidebar-main a {
   font-size: 18px;
-  line-height: 60px;
+  line-height: 45px;
 }
 
 ul.sidebar a > .presence_icon {
@@ -170,13 +170,13 @@ ul.sidebar .sidebar-main a {
 .row.header {
   position: fixed;
   top: 0;
-  left: 250px;
+  left: 220px;
   right: 0;
-  height: 60px;
+  height: 45px;
   width: 100%;
   background: #F3F3F3;
   z-index: 100;
-  line-height: 60px;
+  line-height: 45px;
   font-size: 22px;
   padding-left: 20px;
   overflow: hidden;
@@ -198,8 +198,8 @@ ul.sidebar .sidebar-main a {
   width: calc(100% - 250px);
   right: 0;
   left: 250px;
-  margin-top: 60px;
-  margin-bottom: 60px;
+  margin-top: 45px;
+  margin-bottom: 45px;
   height: calc(100% - 140px);
   box-sizing: border-box;
   overflow-y: scroll;
@@ -248,7 +248,7 @@ a.message-sender {
   height: 80px;
   bottom: 0;
   padding: 0px;
-  left: 250px;
+  left: 220px;
   right: 0px;
   z-index: 50;
   background: #FFFFFF;
