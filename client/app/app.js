@@ -43,7 +43,8 @@ angular.module('chatApp', [
   })
 
   .run(function ($rootScope, $location, Auth, socket) {
-    // Redirect to login if route requires auth and you're not logged in
+    $rootScope.connectedUsers = [];
+
     $rootScope.$on('$stateChangeStart', function (event, next) {
       Auth.isLoggedInAsync(function (loggedIn) {
         if (next.authenticate && !loggedIn) {
@@ -52,8 +53,15 @@ angular.module('chatApp', [
       });
     });
 
+    socket.socket.emit('userConnected', Auth.getCurrentUser());
 
-    socket.socket.on('isConnected', function () {
-      $rootScope.isConnected = true;
+    socket.socket.on('newUserConnected', function (user) {
+      $rootScope.connectedUsers.push(user);
+      console.log($rootScope.connectedUsers);
+    });
+
+    socket.socket.on('userDisconnected', function () {
+      $rootScope.connectedUsers.pop();
+      console.log($rootScope.connectedUsers);
     });
   });

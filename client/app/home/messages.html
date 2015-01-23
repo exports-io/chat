@@ -4,15 +4,18 @@
     <ul class="sidebar">
       <li class="sidebar-main"><a>Exports.io</a></li>
 
-      <li class="sidebar-title"><span>Channels</span></li>
-      <li class="sidebar-list" ng-repeat="channel in channels">
+      <li class="sidebar-title"><span>Channels</span><a class="icon-new-channel" ng-click="createNewChannel()"><i class="fa fa-plus"></i></a></li>
+      <li class="sidebar-list" ng-class="{'active': activeChannel == channel.name}" ng-repeat="channel in channels">
         <a ng-click="switchChannel(channel)"># {{channel.name}}</a>
       </li>
 
       <li><br></li>
       <li class="sidebar-title"><span>Direct Messages</span></li>
       <li class="sidebar-list" ng-repeat="user in users">
-        <a href="#"><i class="fa fa-circle presence_icon" ng-class="{connected: 'icon-green'}"></i><span>{{user.name}}</span></a>
+        <a ng-click="switchIM(user)">
+          <i class="fa fa-circle presence_icon" ng-class="{connected: 'icon-green'}"></i>
+          <span>{{user.name}}</span>
+        </a>
       </li>
       <li><br></li>
       <li class="sidebar-title"><span>Private Groups</span></li>
@@ -29,11 +32,63 @@
     </div>
   </div>
 
+  <div class="search-container">
+    <input class="search-input" placeholder="search">
+
+    <a ng-click="openDrawer()">
+      <i class="fa fa-angle-left fa-drawer-closed" ng-if="!drawerOpen"></i>
+      <i class="fa fa-angle-right fa-drawer-open" ng-if="drawerOpen"></i>
+    </a>
+  </div>
 
   <div ui-view="content"></div>
 
 
+  <div class="drawer-container" ng-if="drawerOpen">
+    <h2>Files</h2>
+
+    <p>View and search files</p>
+  </div>
+</div>
 
 
+<div ng-controller="ModalInstanceCtrl">
+  <script type="text/ng-template" id="myModalContent.html">
+    <div class="modal-header">
+      <h3 class="modal-title">Create a new Channel</h3>
+    </div>
+    <div class="modal-body">
 
+      <h5 style="text-align: center">This will create a new public channel that anyone on your team can join.</h5>
+
+      <p style="text-align: center">If you need this conversation to be private, you should create a new Private Group instead.</p>
+
+      <form class="form-horizontal">
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Name</label>
+
+          <div class="col-sm-10">
+            <input type="text" class="form-control" ng-model="newChannel.name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Purpose</label>
+
+          <div class="col-sm-10">
+            <input type="text" class="form-control" ng-model="newChannel.purpose.value">
+          </div>
+        </div>
+
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-default" ng-click="cancel()">Canecel</button>
+      <button class="btn btn-success" ng-click="ok()">Create Channel</button>
+    </div>
+  </script>
+
+  <button class="btn btn-default" ng-click="open()">Open me!</button>
+  <button class="btn btn-default" ng-click="open('lg')">Large modal</button>
+  <button class="btn btn-default" ng-click="open('sm')">Small modal</button>
+  <div ng-show="selected">Selection from a modal: {{ selected }}</div>
 </div>
