@@ -7,6 +7,7 @@
 
 var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
+var Channel = require('../api/channel/channel.model');
 
 Thing.find({}).remove(function () {
   Thing.create({
@@ -28,6 +29,13 @@ Thing.find({}).remove(function () {
     name: 'Deployment Ready',
     info: 'Easily deploy your app to Heroku or Openshift with the heroku and openshift subgenerators'
   });
+});
+
+
+Channel.find({}).remove(function () {
+  Channel.create({
+
+  })
 });
 
 User.find({}).remove(function () {

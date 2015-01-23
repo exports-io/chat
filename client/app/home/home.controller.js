@@ -15,12 +15,14 @@ angular.module('chatApp')
       socket.syncUpdates('im', $scope.messages);
     });
 
+    $http.get('/api/users/').success(function (results) {
+      $scope.users = results;
+    });
+
     $scope.sendMessage = function () {
       if ($scope.inputText === '') {
         return;
       }
-
-      socket.socket.emit('im:stopTyping');
 
       var tempMsg = {
         user: $scope.currentUser.name,
@@ -29,6 +31,7 @@ angular.module('chatApp')
         ts: new Date()
       };
 
+      socket.socket.emit('im:stopTyping');
       $http.post('/api/ims', tempMsg);
       $scope.inputText = '';
       $scope.scrollDown = true;
@@ -40,7 +43,7 @@ angular.module('chatApp')
       $scope.userTyping = data;
     });
 
-    socket.socket.on('im:stopTyping', function () {
+    socket.socket.on('im:isNotTyping', function () {
       $scope.isTyping = false;
     });
 
@@ -48,7 +51,7 @@ angular.module('chatApp')
     $scope.setTyping = function () {
       var obj = $scope.currentUser;
 
-      socket.socket.emit('im:isTyping', obj);
+      socket.socket.emit('im:startTyping', obj);
 
       if (timeout) {
         $timeout.cancel(timeout);
@@ -56,12 +59,11 @@ angular.module('chatApp')
 
       timeout = $timeout(function () {
         socket.socket.emit('im:stopTyping');
-      }, 5000);
+      }, 4000);
     };
 
 
     $scope.$on('$destroy', function () {
       socket.unsyncUpdates('im');
     });
-
   });

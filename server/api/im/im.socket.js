@@ -14,12 +14,12 @@ exports.register = function (socket) {
     onRemove(socket, doc);
   });
 
-  socket.on("im:isTyping", function (data) {
+  socket.on("im:startTyping", function (data) {
     socket.broadcast.emit("im:isTyping", data);
   });
 
   socket.on("im:stopTyping", function (data) {
-    socket.broadcast.emit("im:stopTyping", data);
+    socket.broadcast.emit("im:isNotTyping", data);
   });
 
 };

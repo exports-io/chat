@@ -2,7 +2,11 @@
 
 angular.module('chatApp')
   .controller('LoginCtrl', function ($scope, Auth, $location) {
-    $scope.user = {};
+    $scope.user = {
+      email: "p@ex.io",
+      password: "pass"
+    };
+
     $scope.errors = {};
 
     $scope.login = function (form) {
