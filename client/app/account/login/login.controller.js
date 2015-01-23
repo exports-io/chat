@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('chatApp')
-  .controller('LoginCtrl', function ($scope, Auth, $location) {
+  .controller('LoginCtrl', function ($scope, Auth, $location, $state) {
     $scope.user = {
-      email: "p@ex.io",
-      password: "pass"
+      email: 'p@ex.io',
+      password: 'pass'
     };
 
     $scope.errors = {};
@@ -19,7 +19,8 @@ angular.module('chatApp')
         })
           .then(function () {
             // Logged in, redirect to home
-            $location.path('/');
+            $state.go('index');
+            $state.go('index.messages', {channel : 'general'});
           })
           .catch(function (err) {
             $scope.errors.other = err.message;

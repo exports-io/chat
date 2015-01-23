@@ -1,0 +1,33 @@
+<div class="row header">
+  <div class="col-xs-12">
+    <div class="meta">
+      <div class="page">
+        # {{channelName}}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="content-wrapper" scroll-glue="scrollDown">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="message-content">
+        <div class="message-group" ng-repeat="msg in messages">
+          <a class="message-sender">{{msg.user}}</a>
+          <span class="message-ts">{{msg.ts | date:'shortTime'}}</span>
+          <a class="message-text">{{msg.text}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="textfield-footer">
+  <div>
+    <form ng-submit="sendMessage(inputText)">
+      <input ng-model="inputText" ng-change="setTyping()">
+    </form>
+    <span class="isTyping" ng-if="isTyping"><span class="isType-name">{{userTyping.name}}</span> is typing ...</span>
+  </div>
+</div>
