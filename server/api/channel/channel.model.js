@@ -4,10 +4,9 @@ var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
 var ChannelSchema = new Schema({
-  id: {type: String, unique: true},
-  name: {type: String, unique: true, lowercase: true},
+  name: {type: String, unique: true},
   is_channel: Boolean,
-  created: {type: Date, default: Date.now},
+  created: {type: Date, default : Date.now},
   creator: String,
   is_archived: Boolean,
   is_general: Boolean,
@@ -22,8 +21,7 @@ var ChannelSchema = new Schema({
     value: String,
     creator: String,
     last_set: Number
-  },
-  num_members: Number
+  }
 });
 
 module.exports = mongoose.model('Channel', ChannelSchema);

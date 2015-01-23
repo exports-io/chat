@@ -6,19 +6,27 @@
 
 var Chat = require('./chat.model');
 
-exports.register = function(socket) {
+exports.register = function (socketio, socket) {
   Chat.schema.post('save', function (doc) {
-    onSave(socket, doc);
+    onSave(socketio, doc);
   });
   Chat.schema.post('remove', function (doc) {
-    onRemove(socket, doc);
+    onRemove(socketio, doc);
   });
+
+  socket.on("startTyping", function (data) {
+    socket.broadcast.to(data.channel).emit("isTyping", data);
+  });
+
+  socket.on("stopTyping", function (data) {
+    socket.broadcast.to(data.channel).emit("isNotTyping", data);
+  });
+};
+
+function onSave(socketio, doc, cb) {
+  socketio.to(doc.channel).emit('chat:save', doc);
 }
 
-function onSave(socket, doc, cb) {
-  socket.emit('chat:save', doc);
-}
-
-function onRemove(socket, doc, cb) {
-  socket.emit('chat:remove', doc);
+function onRemove(socketio, doc, cb) {
+  socketio.to(doc.channel).emit('chat:remove', doc);
 }

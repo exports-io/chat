@@ -4,13 +4,16 @@
 
 html {
   height: 100%;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 body {
   background: #FFFFFF;
   color: #333 !important;
   height: 100%;
-  overflow: hidden;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 a,
@@ -29,13 +32,19 @@ a:active {
   -webkit-font-smoothing: antialiased;
 }
 
+button,
+button:active,
+button:focus {
+  outline: none !important;
+}
+
 /*
  * FULL PAGE
  */
 
 .page-wrapper {
   height: 100%;
-  padding-left: 220px;
+  padding-left: 250px;
   overflow-y: auto;
 }
 
@@ -44,11 +53,11 @@ a:active {
  */
 
 #sidebar-wrapper {
-  margin-left: -220px;
-  width: 220px;
+  margin-left: -250px;
+  width: 250px;
   top: 0;
   background: #30426a;
-  left: 220px;
+  left: 250px;
   position: fixed;
   height: 100%;
   z-index: 999;
@@ -73,7 +82,7 @@ ol, ul {
 }
 
 ul.sidebar .sidebar-main {
-  height: 50px;
+  height: 65px;
 }
 
 ul.sidebar .sidebar-title {
@@ -83,6 +92,22 @@ ul.sidebar .sidebar-title {
   line-height: 40px;
   text-transform: uppercase;
   transition: all .6s ease 0s;
+}
+
+ul.sidebar .sidebar-title .icon-new-channel {
+  font-size: 14px;
+  line-height: 20px;
+  padding-top: 10px;
+  color: #738bc0;
+  float: right;
+  width: auto;
+  padding-right: 15px;
+  display: inline-block;
+}
+
+ul.sidebar .sidebar-title .icon-new-channel:hover,
+ul.sidebar .sidebar-title .icon-new-channel:active {
+  color: white;
 }
 
 ul.sidebar .sidebar-list {
@@ -101,13 +126,13 @@ ul.sidebar li a {
   display: block;
   float: left;
   text-decoration: none;
-  width: 220px;
+  width: 250px;
   text-align: left;
 }
 
 ul.sidebar .sidebar-main a {
   font-size: 18px;
-  line-height: 45px;
+  line-height: 60px;
 }
 
 ul.sidebar a > .presence_icon {
@@ -127,8 +152,10 @@ ul.sidebar a span {
 #page-wrapper ul.sidebar .sidebar-title.separator,
 .sidebar-footer,
 ul.sidebar .sidebar-list a:hover,
+ul.sidebar .active > a,
 ul.sidebar .sidebar-main a {
-  background: #2d3e63;
+  background: #2d3e63 !important;
+  color: #ffffff;
 }
 
 /*
@@ -170,13 +197,14 @@ ul.sidebar .sidebar-main a {
 .row.header {
   position: fixed;
   top: 0;
-  left: 220px;
+  left: 250px;
   right: 0;
-  height: 45px;
+  height: 60px;
   width: 100%;
+  min-width: 600px;
   background: #F3F3F3;
   z-index: 100;
-  line-height: 45px;
+  line-height: 60px;
   font-size: 22px;
   padding-left: 20px;
   overflow: hidden;
@@ -187,19 +215,66 @@ ul.sidebar .sidebar-main a {
   margin-right: 0 !important;
 }
 
+.header .page-title {
+  z-index: 1001;
+}
+
 /*
  * Content
  */
 
-#content-wrapper {
+.search-container {
+  position: absolute;
+  top: 0;
+  margin-right: 20px;
+  height: 60px;
+  right: 0;
+  z-index: 900;
+}
+
+.search-container .search-input {
+  border: 1px solid #808080;
+  min-width: 200px;
+  line-height: 20px;
+  margin-top: 13px;
+  margin-right: 20px;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.search-container .search-input:focus {
+  outline: none;
+}
+
+.search-container a > .fa {
+  padding: 10px 12px;
+  margin-top: 5px;
+  font-size: 22px;
+  line-height: 10px;
+  border: 1px solid #808080;
+  border-radius: 200px;
+  color: #000000;
+}
+
+.search-container a > .fa:hover,
+.search-container a > .fa:active {
+  background: #000000;
+  color: #ffffff;
+}
+
+/*
+ * Content
+ */
+
+.content-wrapper {
   position: absolute;
   padding-left: 0;
   margin-left: 0;
   width: calc(100% - 250px);
   right: 0;
   left: 250px;
-  margin-top: 45px;
-  margin-bottom: 45px;
+  margin-top: 60px;
+  margin-bottom: 60px;
   height: calc(100% - 140px);
   box-sizing: border-box;
   overflow-y: scroll;
@@ -248,7 +323,8 @@ a.message-sender {
   height: 80px;
   bottom: 0;
   padding: 0px;
-  left: 220px;
+  left: 250px;
+  min-width: 600px;
   right: 0px;
   z-index: 50;
   background: #FFFFFF;
@@ -281,4 +357,28 @@ a.message-sender {
 
 .isType-name {
   font-weight: bolder;
+}
+
+.drawer-container {
+  position: absolute;
+  height: calc(100% - 60px);
+  top: 60px;
+  bottom: 80px;
+  width: 400px;
+  right: 0;
+  padding: 10px;
+  z-index: 100;
+  border-left: 1px solid #EEEEEE;
+}
+
+.fa-drawer-open {
+
+}
+
+.drawer-open {
+  width: calc(100% - 400px - 250px) !important;
+}
+
+.input-drawer-open {
+  width: calc(100% - 400px) !important;
 }

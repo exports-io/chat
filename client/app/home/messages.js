@@ -9,7 +9,7 @@ angular.module('chatApp')
         views: {
           '': {
             templateUrl: 'app/home/messages.html',
-            controller: 'HomeCtrl'
+            controller: 'MessagesCtrl'
           }
         }
       })
