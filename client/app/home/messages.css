@@ -53,11 +53,11 @@ button:focus {
  */
 
 #sidebar-wrapper {
-  margin-left: -250px;
-  width: 250px;
+  margin-left: -220px;
+  width: 220px;
   top: 0;
   background: #30426a;
-  left: 250px;
+  left: 220px;
   position: fixed;
   height: 100%;
   z-index: 999;
@@ -286,7 +286,7 @@ ul.sidebar .sidebar-main a {
  */
 
 .message-content {
-  padding: 10px 20px 10px 20px;
+  padding: 10px 20px;
 }
 
 .message-group {
