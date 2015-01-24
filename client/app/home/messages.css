@@ -360,6 +360,10 @@ a.message-sender {
   font-weight: bolder;
 }
 
+.message-divider{
+  border-top:1px solid #efefef
+}
+
 .drawer-container {
   position: absolute;
   height: calc(100% - 60px);
