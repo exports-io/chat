@@ -81,8 +81,13 @@ ol, ul {
   margin-bottom: 10px;
 }
 
-ul.sidebar .sidebar-main {
-  height: 65px;
+ul.sidebar .sidebar-header {
+  height: 50px;
+}
+
+ul.sidebar .sidebar-header a {
+  font-size: 18px;
+  line-height: 50px;
 }
 
 ul.sidebar .sidebar-title {
@@ -130,11 +135,6 @@ ul.sidebar li a {
   text-align: left;
 }
 
-ul.sidebar .sidebar-main a {
-  font-size: 18px;
-  line-height: 60px;
-}
-
 ul.sidebar a > .presence_icon {
   padding: 0;
   width: 8px;
@@ -153,8 +153,8 @@ ul.sidebar a span {
 .sidebar-footer,
 ul.sidebar .sidebar-list a:hover,
 ul.sidebar .active > a,
-ul.sidebar .sidebar-main a {
-  background: #2d3e63 !important;
+ul.sidebar .sidebar-header a {
+  background: #253756 !important;
   color: #ffffff;
 }
 
@@ -179,7 +179,7 @@ ul.sidebar .sidebar-main a {
   font-size: 16px;
   font-weight: 500;
   line-height: 20px;
-  padding-top: 10px;
+  padding-top: 20px;
 }
 
 .sidebar-footer .current-user-status {
@@ -234,8 +234,8 @@ ul.sidebar .sidebar-main a {
 .search-container .search-input {
   border: 1px solid #808080;
   min-width: 200px;
-  line-height: 20px;
-  margin-top: 0px;
+  line-height: 15px;
+  margin-top: 10px;
   margin-right: 20px;
   border-radius: 15px;
   padding: 5px 10px;
@@ -247,8 +247,9 @@ ul.sidebar .sidebar-main a {
 }
 
 .search-container a > .fa {
+  float: right;
+  margin-top: 8px;
   padding: 10px 12px;
-  margin-top: 5px;
   font-size: 22px;
   line-height: 10px;
   border: 1px solid #808080;
@@ -258,8 +259,8 @@ ul.sidebar .sidebar-main a {
 
 .search-container a > .fa:hover,
 .search-container a > .fa:active {
-  background: #000000;
-  color: #ffffff;
+  color: #4685dd;
+  border: 1px solid #4685dd;
 }
 
 /*

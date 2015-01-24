@@ -2,7 +2,7 @@
 
   <div id="sidebar-wrapper">
     <ul class="sidebar">
-      <li class="sidebar-main"><a>Exports.io</a></li>
+      <li class="sidebar-header"><a>Exports.io</a></li>
 
       <li class="sidebar-title"><span>Channels</span><a class="icon-new-channel" ng-click="createNewChannel()"><i class="fa fa-plus"></i></a></li>
       <li class="sidebar-list" ng-class="{'active': activeChannel == channel.name}" ng-repeat="channel in channels">
@@ -20,14 +20,14 @@
       <li><br></li>
       <li class="sidebar-title"><span>Private Groups</span></li>
       <li class="sidebar-list"><a href="#">Senior Executives</a></li>
-      <li class="sidebar-list"><a href="#/tables">Trustees</a></li>
+      <li class="sidebar-list"><a href="#">Trustees</a></li>
     </ul>
 
     <div class="sidebar-footer">
       <div class="current-user">
         <!--<img class="current-user-avatar">-->
         <span class="current-user-name">{{currentUser.name}}</span>
-        <span class="current-user-status">online</span>
+        <span class="current-user-status"><i class="fa fa-circle presence_icon" ng-class="{connected: 'icon-green'}"></i> online</span>
       </div>
     </div>
   </div>
