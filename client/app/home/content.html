@@ -18,11 +18,15 @@
         <hr>
       </div>
 
-      <div class="message-content">
-        <div class="message-group" ng-repeat="msg in messages">
-          <a class="message-sender">{{msg.user}}</a>
-          <span class="message-ts">{{msg.ts | date:'shortTime'}}</span>
-          <a class="message-text">{{msg.text}}</a>
+      <div class="message-container">
+        <div class="message-group" ng-repeat="msg in messages" ng-class="{'show-user' : msg.user != messages[$index -1].user}">
+          <div ng-if="msg.user != messages[$index -1].user">
+            <a class="message-sender">{{msg.user}}</a><span class="message-ts">{{msg.ts | date:'shortTime'}}</span>
+          </div>
+          <div class="message-content">
+            <span class="message-ts-hover" ng-if="msg.user == messages[$index -1].user">{{msg.ts | date: 'h:mm'}}</span>
+            <a class="message-text">{{msg.text}}</a>
+          </div>
         </div>
       </div>
     </div>

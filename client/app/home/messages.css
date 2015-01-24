@@ -286,33 +286,60 @@ ul.sidebar .sidebar-header a {
  * Messages
  */
 
-.message-content {
-  padding: 10px 20px;
+.message-container {
+  padding: 10px;
 }
 
 .message-group {
   display: block;
-  padding: 5px 0;
+  padding: 4px 10px 2px 40px;
   color: #000000;
+}
+
+.message-group.show-user {
+  margin-top: 10px;
 }
 
 a.message-sender {
   font-weight: bold;
+  letter-spacing: 0.03em;
   color: #000000;
 }
 
 .message-ts {
-  color: #a2a3a7;
+  margin-left: 5px;
+  color: #C0C0C4;
   font-size: 12px;
-  font-weight: lighter;
+  font-weight: 300;
+}
+
+.message-content {
+  display: block;
+  width: inherit;
+}
+
+.message-group:hover .message-ts-hover {
+  display: inline-block;
 }
 
 .message-text {
-  display: block;
-  color: #000000;
+  display: inline-block;
+  color: #3a3a3a;
   text-decoration: none;
   font-size: 15px;
   line-height: 22px
+}
+
+.message-ts-hover {
+  display: none;
+  position: absolute;
+  left: 20px;
+  width: 36px;
+  margin-top: 4px;
+  color: #C0C0C4;
+  font-size: 12px;
+  font-weight: 300;
+
 }
 
 /*
@@ -360,8 +387,8 @@ a.message-sender {
   font-weight: bolder;
 }
 
-.message-divider{
-  border-top:1px solid #efefef
+.message-divider {
+  border-top: 1px solid #efefef
 }
 
 .drawer-container {
