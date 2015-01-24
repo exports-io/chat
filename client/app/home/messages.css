@@ -300,6 +300,10 @@ ul.sidebar .sidebar-header a {
   margin-top: 10px;
 }
 
+.message-group:hover.show-user .message-ts-hover {
+  display: none;
+}
+
 a.message-sender {
   font-weight: bold;
   letter-spacing: 0.03em;

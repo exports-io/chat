@@ -24,9 +24,7 @@
             <a class="message-sender">{{msg.user}}</a><span class="message-ts">{{msg.ts | date:'shortTime'}}</span>
           </div>
           <div class="message-content">
-            <span class="message-ts-hover" ng-if="!(msg.user != messages[$index -1].user || (( msg.user == messages[$index -1].user && (msg.ts - messages[$index - 1].ts) >= 60000)))">
-              {{msg.ts | date: 'h:mm'}}
-            </span>
+            <span class="message-ts-hover">{{msg.ts | date: 'h:mm'}}</span>
             <a class="message-text">{{msg.text}}</a>
           </div>
         </div>
