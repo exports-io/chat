@@ -275,8 +275,8 @@ ul.sidebar .sidebar-header a {
   right: 0;
   left: 220px;
   margin-top: 50px;
-  margin-bottom: 50px;
-  height: calc(100% - 140px);
+  margin-bottom: 80px;
+  height: calc(100% - 130px);
   box-sizing: border-box;
   overflow-y: scroll;
   z-index: 100;
