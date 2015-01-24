@@ -8,7 +8,7 @@ var ChatSchema = new Schema({
   user: String,
   text: String,
   type: {type: String, default: "message"},
-  ts: {type: Date, default: Date.now}
+  ts: String
 });
 
 module.exports = mongoose.model('Chat', ChatSchema);

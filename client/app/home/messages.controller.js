@@ -87,7 +87,7 @@ angular.module('chatApp')
         text: $scope.inputText,
         channel: $scope.channelName,
         type: 'message',
-        ts: new Date()
+        ts: moment().valueOf()
       };
 
       var obj = {
