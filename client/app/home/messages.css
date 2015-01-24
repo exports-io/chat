@@ -197,14 +197,14 @@ ul.sidebar .sidebar-main a {
 .row.header {
   position: fixed;
   top: 0;
-  left: 250px;
+  left: 220px;
   right: 0;
-  height: 60px;
+  height: 50px;
   width: 100%;
-  min-width: 600px;
+  min-width: 500px;
   background: #F3F3F3;
   z-index: 100;
-  line-height: 60px;
+  line-height: 50px;
   font-size: 22px;
   padding-left: 20px;
   overflow: hidden;
@@ -227,7 +227,6 @@ ul.sidebar .sidebar-main a {
   position: absolute;
   top: 0;
   margin-right: 20px;
-  height: 60px;
   right: 0;
   z-index: 900;
 }
@@ -236,10 +235,11 @@ ul.sidebar .sidebar-main a {
   border: 1px solid #808080;
   min-width: 200px;
   line-height: 20px;
-  margin-top: 13px;
+  margin-top: 0px;
   margin-right: 20px;
-  border-radius: 5px;
+  border-radius: 15px;
   padding: 5px 10px;
+  vertical-align: text-bottom;
 }
 
 .search-container .search-input:focus {
@@ -270,11 +270,11 @@ ul.sidebar .sidebar-main a {
   position: absolute;
   padding-left: 0;
   margin-left: 0;
-  width: calc(100% - 250px);
+  width: calc(100% - 220px);
   right: 0;
-  left: 250px;
-  margin-top: 60px;
-  margin-bottom: 60px;
+  left: 220px;
+  margin-top: 50px;
+  margin-bottom: 50px;
   height: calc(100% - 140px);
   box-sizing: border-box;
   overflow-y: scroll;
@@ -291,7 +291,7 @@ ul.sidebar .sidebar-main a {
 
 .message-group {
   display: block;
-  padding: 10px 0;
+  padding: 5px 0;
   color: #000000;
 }
 
@@ -323,7 +323,7 @@ a.message-sender {
   height: 80px;
   bottom: 0;
   padding: 0px;
-  left: 250px;
+  left: 220px;
   min-width: 600px;
   right: 0px;
   z-index: 50;
@@ -376,7 +376,7 @@ a.message-sender {
 }
 
 .drawer-open {
-  width: calc(100% - 400px - 250px) !important;
+  width: calc(100% - 400px - 220px) !important;
 }
 
 .input-drawer-open {
