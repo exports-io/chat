@@ -65,7 +65,6 @@ angular.module('chatApp')
 
     $http.get('/api/channels/' + $scope.channelName).then(function (success) {
       $scope.thisChannel = success.data[0];
-      console.log($scope.thisChannel);
     }, function (error) {
       console.log(error);
     });
