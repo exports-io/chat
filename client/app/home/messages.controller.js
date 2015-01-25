@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('chatApp')
-  .controller('MessagesCtrl', function ($scope, $rootScope, $http, $state, $stateParams, $modal, $timeout, socket, Auth) {
+  .controller('SidebarCtrl', function ($scope, $rootScope, $http, $state, $stateParams, $modal, $timeout, socket, Auth) {
     // $scope.activeChannel = "general";
     $scope.drawerOpen = false;
 
@@ -28,7 +28,11 @@ angular.module('chatApp')
 
     $scope.openDrawer = function () {
       $scope.drawerOpen = $scope.drawerOpen ? false : true;
+    };
 
+    $scope.logout = function () {
+      Auth.logout();
+      $state.go('login');
     };
 
     $scope.createNewChannel = function () {
@@ -157,4 +161,23 @@ angular.module('chatApp')
     $scope.cancel = function () {
       $scope.modalInstance.dismiss('cancel');
     };
+  })
+
+  .directive('enterSubmit', function () {
+    return {
+      restrict: 'A',
+      link: function (scope, elem, attrs) {
+
+        elem.bind('keydown', function (event) {
+          var code = event.keyCode || event.which;
+
+          if (code === 13) {
+            if (!event.shiftKey) {
+              event.preventDefault();
+              scope.$apply(attrs.enterSubmit);
+            }
+          }
+        });
+      }
+    }
   });

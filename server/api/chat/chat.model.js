@@ -10,5 +10,5 @@ var ChatSchema = new Schema({
   type: {type: String, default: "message"},
   ts: String
 });
-
+ 
 module.exports = mongoose.model('Chat', ChatSchema);

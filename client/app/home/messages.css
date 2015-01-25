@@ -60,7 +60,6 @@ button:focus {
   left: 220px;
   position: fixed;
   height: 100%;
-  z-index: 999;
   overflow: hidden;
 }
 
@@ -71,7 +70,7 @@ ul.sidebar {
   padding: 0;
   margin: 0;
   list-style: none;
-  text-indent: 20px;
+  text-indent: 18px;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -92,8 +91,9 @@ ul.sidebar .sidebar-header a {
 
 ul.sidebar .sidebar-title {
   color: #738bc0;
-  font-size: 12px;
-  height: 35px;
+  font-size: 13px;
+  height: 30px;
+  margin-top: 10px;
   line-height: 40px;
   text-transform: uppercase;
   transition: all .6s ease 0s;
@@ -135,6 +135,12 @@ ul.sidebar li a {
   text-align: left;
 }
 
+.channel-hashtag {
+  color: #8792a8;
+  padding-right: 2px;
+  font-weight: 300;
+}
+
 ul.sidebar a > .presence_icon {
   padding: 0;
   width: 8px;
@@ -145,7 +151,7 @@ ul.sidebar a > .presence_icon {
   vertical-align: middle;
 }
 
-ul.sidebar a span {
+ul.sidebar a .im-title {
   margin-left: 30px;
 }
 
@@ -166,7 +172,7 @@ ul.sidebar .sidebar-header a {
   position: absolute;
   height: 80px;
   bottom: 0;
-  width: 100%;
+  width: 220px;
   padding: 0;
   margin: 0;
   transition: all .6s ease 0s;
@@ -174,8 +180,8 @@ ul.sidebar .sidebar-header a {
 }
 
 .sidebar-footer .current-user-name {
-  display: block;
-  margin-left: 50px;
+  display: inline-block;
+  margin-left: 30px;
   font-size: 16px;
   font-weight: 500;
   line-height: 20px;
@@ -184,10 +190,32 @@ ul.sidebar .sidebar-header a {
 
 .sidebar-footer .current-user-status {
   display: block;
-  margin-left: 50px;
-  font-weight: 300;
+  margin-left: 30px;
+  font-weight: 200;
   letter-spacing: 1px;
   color: #53eb82;
+}
+
+.current-user-toggle .dropdown-toggle {
+  background: none;
+  border: none;
+  margin-left: 10px;
+}
+
+.current-user-toggle .dropdown-menu {
+  position: fixed;
+  bottom: 70px;
+  left: 15px;
+  width: 200px;
+  background-color: #ffffff;
+  opacity: 0.98;
+  overflow: scroll;
+  z-index: 1000 !important;
+}
+
+.current-user-toggle .dropdown-menu li a:hover {
+  background: #30426A;
+  color: #ffffff;
 }
 
 /*
@@ -203,7 +231,6 @@ ul.sidebar .sidebar-header a {
   width: 100%;
   min-width: 500px;
   background: #F3F3F3;
-  z-index: 100;
   line-height: 50px;
   font-size: 22px;
   padding-left: 20px;
@@ -219,6 +246,10 @@ ul.sidebar .sidebar-header a {
   z-index: 1001;
 }
 
+.header .page-title span {
+  color: #7b7b7b;
+}
+
 /*
  * Content
  */
@@ -228,7 +259,7 @@ ul.sidebar .sidebar-header a {
   top: 0;
   margin-right: 20px;
   right: 0;
-  z-index: 900;
+  z-index: 500;
 }
 
 .search-container .search-input {
@@ -279,7 +310,6 @@ ul.sidebar .sidebar-header a {
   height: calc(100% - 130px);
   box-sizing: border-box;
   overflow-y: scroll;
-  z-index: 100;
 }
 
 /*
@@ -288,6 +318,7 @@ ul.sidebar .sidebar-header a {
 
 .message-container {
   padding: 10px;
+  z-index: -1;
 }
 
 .message-group {
@@ -358,7 +389,8 @@ a.message-sender {
   left: 220px;
   min-width: 600px;
   right: 0px;
-  z-index: 50;
+  z-index: 10;
+
   background: #FFFFFF;
 }
 
@@ -366,18 +398,20 @@ a.message-sender {
   margin: 10px 20px;
 }
 
-.textfield-footer input {
+.textfield-footer .input-textarea {
   position: relative;
   padding: 5px 10px;
   height: 40px;
+  min-height: 40px !important;
   width: 100%;
   border: 2px solid #c5c5c5;
   border-radius: 2px;
   overflow: hidden;
+  resize: none !important;
 }
 
-.textfield-footer input:focus,
-.textfield-footer input:active {
+.textfield-footer .input-textarea:focus,
+.textfield-footer .input-textarea:active {
   outline: none;
 }
 

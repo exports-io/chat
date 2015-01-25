@@ -6,7 +6,7 @@
 
       <li class="sidebar-title"><span>Channels</span><a class="icon-new-channel" ng-click="createNewChannel()"><i class="fa fa-plus"></i></a></li>
       <li class="sidebar-list" ng-class="{'active': activeChannel == channel.name}" ng-repeat="channel in channels">
-        <a ng-click="switchChannel(channel)"># {{channel.name}}</a>
+        <a ng-click="switchChannel(channel)"><span class="channel-hashtag">#</span>{{channel.name}}</a>
       </li>
 
       <li><br></li>
@@ -14,7 +14,7 @@
       <li class="sidebar-list" ng-repeat="user in users">
         <a ng-click="switchIM(user)">
           <i class="fa fa-circle presence_icon" ng-class="{connected: 'icon-green'}"></i>
-          <span>{{user.name}}</span>
+          <span class="im-title">{{user.name}}</span>
         </a>
       </li>
       <li><br></li>
@@ -27,7 +27,21 @@
       <div class="current-user">
         <!--<img class="current-user-avatar">-->
         <span class="current-user-name">{{currentUser.name}}</span>
+
+        <div class="current-user-toggle btn-group current-user-toggle dropup" dropdown>
+          <button class="dropdown-toggle"><span class="fa fa-chevron-up"></span></button>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="">Preferences</a></li>
+            <li><a href="">Your Account</a></li>
+            <li><a href="">Your Profile</a></li>
+            <li><a href="">Change your Photo</a></li>
+            <li class="divider"></li>
+            <li><a ng-click="logout()"><i class="fa fa-sign-out"></i> Sign Out</a></li>
+          </ul>
+        </div>
+
         <span class="current-user-status"><i class="fa fa-circle presence_icon" ng-class="{connected: 'icon-green'}"></i> online</span>
+
       </div>
     </div>
   </div>
@@ -86,9 +100,4 @@
       <button class="btn btn-success" ng-click="ok()">Create Channel</button>
     </div>
   </script>
-
-  <button class="btn btn-default" ng-click="open()">Open me!</button>
-  <button class="btn btn-default" ng-click="open('lg')">Large modal</button>
-  <button class="btn btn-default" ng-click="open('sm')">Small modal</button>
-  <div ng-show="selected">Selection from a modal: {{ selected }}</div>
 </div>
