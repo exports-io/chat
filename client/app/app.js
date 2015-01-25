@@ -12,6 +12,19 @@ angular.module('chatApp', [
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider.otherwise('/messages/general');
 
+    /*
+     $urlRouterProvider.when(/messages\/[@]+/i, ['$state', '$stateParams', '$rootScope', function ($state, $stateParams, $rootScope) {
+     //console.log($stateParams);
+     //$state.go('index.im', {im: $rootScope.stateParam})
+     }]);
+
+     */
+
+    $urlRouterProvider.rule(function ($injector, $location) {
+      var path = $location.path(), normalized = path.toLowerCase();
+      if (path != normalized) return normalized;
+    });
+
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('authInterceptor');
   })
@@ -57,11 +70,11 @@ angular.module('chatApp', [
 
     socket.socket.on('newUserConnected', function (user) {
       $rootScope.connectedUsers.push(user);
-      console.log($rootScope.connectedUsers);
+      //console.log($rootScope.connectedUsers);
     });
 
     socket.socket.on('userDisconnected', function () {
       $rootScope.connectedUsers.pop();
-      console.log($rootScope.connectedUsers);
+      //console.log($rootScope.connectedUsers);
     });
   });

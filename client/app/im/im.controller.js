@@ -1,15 +1,23 @@
 'use strict';
 
 angular.module('chatApp')
+
   .controller('IMContentCtrl', function ($scope, $rootScope, $http, $state, $timeout, $stateParams, socket) {
     $scope.inputText = '';
     $scope.messages = [];
     $scope.scrollDown = true;
     $scope.isTyping = false;
-    $scope.imName = $stateParams.im;
+    $scope.imName = $rootScope.stateParam = $stateParams.im;
 
-    $http.get('/api/channels/' + $scope.channelName).then(function (success) {
-      $scope.thisChannel = success.data[0];
+
+    $http.get('/api/user/' + $scope.imName).then(function (success) {
+      console.log(success);
+    }, function (error) {
+      console.log(error);
+    });
+
+    $http.get('/api/im/' + $scope.imName).then(function (success) {
+      $scope.thisIM = success.data[0];
     }, function (error) {
       console.log(error);
     });

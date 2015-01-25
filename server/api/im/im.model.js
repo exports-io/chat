@@ -4,7 +4,7 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var ImSchema = new Schema({
-  id: String,
+  SEQ: String,
   is_im: Boolean,
   user: String,
   created: Number,

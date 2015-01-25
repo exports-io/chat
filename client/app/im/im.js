@@ -5,7 +5,7 @@ angular.module('chatApp')
     $stateProvider
 
       .state('index.im', {
-        url: 'messages/@{im}',
+        url: 'messages/@{im}', //:[@]*
         views: {
           'content@index': {
             templateUrl: 'app/im/im-content.html',

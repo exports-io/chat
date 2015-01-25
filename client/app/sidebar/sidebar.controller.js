@@ -6,6 +6,10 @@ angular.module('chatApp')
     // $scope.activeChannel = "general";
     $scope.drawerOpen = false;
 
+    $rootScope.$on('$stateChangeEnd', function (event, next) {
+      console.log($state.params);
+    });
+
     $rootScope.currentUser = $scope.currentUser = Auth.getCurrentUser();
 
 
@@ -24,7 +28,7 @@ angular.module('chatApp')
     };
 
     $scope.switchIM = function (user) {
-      $state.go('index.im', {im: user.username})
+      $state.transitionTo('index.im', {im: user.username}, {reload: false})
     };
 
     $scope.openDrawer = function () {

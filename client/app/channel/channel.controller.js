@@ -7,7 +7,7 @@ angular.module('chatApp')
     $scope.messages = [];
     $scope.scrollDown = true;
     $scope.isTyping = false;
-    $scope.channelName = $stateParams.channel;
+    $scope.channelName = $rootScope.stateParam = $stateParams.channel;
 
     $http.get('/api/channels/' + $scope.channelName).then(function (success) {
       $scope.thisChannel = success.data[0];

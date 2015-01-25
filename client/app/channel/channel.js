@@ -5,7 +5,7 @@ angular.module('chatApp')
     $stateProvider
 
       .state('index.channel', {
-        url: 'messages/{channel}',
+        url: 'messages/{channel:[^@]*}', // perform regex
         views: {
           'content@index': {
             templateUrl: 'app/channel/channel-content.html',
