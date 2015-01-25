@@ -52,17 +52,20 @@ User.find({}).remove(function () {
 
   User.create({
       provider: 'local',
+      username: 'test',
       name: 'Test User',
       email: 'test@test.com',
       password: 'test'
     }, {
       provider: 'local',
+      username: 'pbernasconi',
       name: 'Paolo Bernasconi',
       email: 'p@ex.io',
       password: 'pass'
     },
     {
       provider: 'local',
+      username: 'marco_b',
       name: 'Marco Bernasconi',
       email: 'm@ex.io',
       password: 'pass'
@@ -70,6 +73,7 @@ User.find({}).remove(function () {
     {
       provider: 'local',
       role: 'admin',
+      username: 'admin',
       name: 'Admin',
       email: 'admin@admin.com',
       password: 'admin'

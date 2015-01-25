@@ -4,10 +4,11 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 var ImSchema = new Schema({
+  id: String,
+  is_im: Boolean,
   user: String,
-  text: String,
-  type: {type: String, default: "message"},
-  ts: {type: Date, default: Date.now}
+  created: Number,
+  is_user_deleted: Boolean
 });
 
 module.exports = mongoose.model('Im', ImSchema);

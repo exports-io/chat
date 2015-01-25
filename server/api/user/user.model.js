@@ -5,7 +5,9 @@ var Schema = mongoose.Schema;
 var crypto = require('crypto');
 
 var UserSchema = new Schema({
+  SEQ: String,
   name: String,
+  username: String,
   email: {type: String, lowercase: true},
   role: {
     type: String,
@@ -17,7 +19,12 @@ var UserSchema = new Schema({
   detail: {
     first_name: String,
     last_name: String,
-    phone: String
+    phone: String,
+    image_24: String,
+    image_32: String,
+    image_48: String,
+    image_72: String,
+    image_192: String
   }
 });
 
@@ -103,6 +110,13 @@ UserSchema
       next(new Error('Invalid password'));
     else
       next();
+  });
+
+
+UserSchema
+  .pre('save', function (next) {
+    this.SEQ = 'U' + Math.floor((Math.random() * 100000000) + 1);
+    next();
   });
 
 /**

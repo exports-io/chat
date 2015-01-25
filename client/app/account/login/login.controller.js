@@ -20,7 +20,7 @@ angular.module('chatApp')
           .then(function () {
             // Logged in, redirect to home
             $state.go('index');
-            $state.go('index.messages', {channel : 'general'});
+            $state.go('index.channel', {channel : 'general'});
           })
           .catch(function (err) {
             $scope.errors.other = err.message;

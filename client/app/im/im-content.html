@@ -1,0 +1,42 @@
+<div class="row header">
+  <div class="col-xs-12">
+    <div class="meta">
+      <div class="page-title">
+        <span>@</span>{{channelName}}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="content-wrapper" scroll-glue="scrollDown" ng-class="{'drawer-open': drawerOpen}">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="channel-header">
+        <h3># {{channelName}}</h3>
+
+        <p>This is the very beginning of the <em>#{{thisChannel.name}}</em> channel, which you created {{thisChannel.created | date:'shortDate'}}</p>
+        <hr>
+      </div>
+
+      <div class="message-container">
+        <div class="message-group" ng-repeat="msg in messages" ng-class="{'show-user' : msg.user != messages[$index -1].user || (msg.ts - messages[$index - 1].ts)  >= 60000}">
+          <div ng-if="msg.user != messages[$index -1].user || (msg.ts - messages[$index - 1].ts)  >= 60000 ">
+            <a class="message-sender">{{msg.user}}</a><span class="message-ts">{{msg.ts | date:'shortTime'}}</span>
+          </div>
+          <div class="message-content">
+            <span class="message-ts-hover">{{msg.ts | date: 'h:mm'}}</span>
+            <a class="message-text">{{msg.text}}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="textfield-footer">
+  <div>
+    <textarea class="input-textarea" ng-model="inputText" ng-change="setTyping()" enter-submit="sendMessage(inputText)" ng-class="{'input-drawer-open': drawerOpen}"></textarea>
+    <span class="isTyping" ng-if="isTyping"><span class="isType-name">{{userTyping.name}}</span> is typing ...</span>
+  </div>
+</div>
