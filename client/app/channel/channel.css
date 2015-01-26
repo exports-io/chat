@@ -77,12 +77,16 @@ button:focus {
 
 .message-group {
   display: block;
-  padding: 4px 10px 2px 40px;
+  padding: 4px 32px 2px 48px;
   color: #000000;
 }
 
 .message-group.show-user {
-  margin-top: 10px;
+  margin-top: 12px;
+}
+
+.message-group.show-user .message-content {
+  margin-top: -1px;
 }
 
 .message-group:hover.show-user .message-ts-hover {
@@ -107,6 +111,17 @@ a.message-sender {
   width: inherit;
 }
 
+.message-avatar {
+  position: absolute;
+  left: 25px;
+  margin-top: 4px;
+  border-radius: 4px;
+  display: inline;
+  float: left;
+  width: 34px;
+  height: 34px;
+}
+
 .message-group:hover .message-ts-hover {
   display: inline-block;
 }
@@ -128,7 +143,6 @@ a.message-sender {
   color: #C0C0C4;
   font-size: 12px;
   font-weight: 300;
-
 }
 
 /*
@@ -195,11 +209,8 @@ a.message-sender {
   border-left: 1px solid #EEEEEE;
 }
 
-.fa-drawer-open {  }
-
-
-
-
+.fa-drawer-open {
+}
 
 .drawer-open {
   width: calc(100% - 400px - 220px) !important;
