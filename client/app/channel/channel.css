@@ -195,9 +195,11 @@ a.message-sender {
   border-left: 1px solid #EEEEEE;
 }
 
-.fa-drawer-open {
+.fa-drawer-open {  }
 
-}
+
+
+
 
 .drawer-open {
   width: calc(100% - 400px - 220px) !important;

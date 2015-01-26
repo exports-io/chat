@@ -10,15 +10,8 @@ angular.module('chatApp', [
   'luegg.directives'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+    $urlRouterProvider.when('/', '/messages/general');
     $urlRouterProvider.otherwise('/messages/general');
-
-    /*
-     $urlRouterProvider.when(/messages\/[@]+/i, ['$state', '$stateParams', '$rootScope', function ($state, $stateParams, $rootScope) {
-     //console.log($stateParams);
-     //$state.go('index.im', {im: $rootScope.stateParam})
-     }]);
-
-     */
 
     $urlRouterProvider.rule(function ($injector, $location) {
       var path = $location.path(), normalized = path.toLowerCase();

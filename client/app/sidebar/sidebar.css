@@ -236,13 +236,14 @@ ul.sidebar .sidebar-header a {
 }
 
 .close-icon {
-  border:1px solid transparent;
+  border: 1px solid transparent;
   background-color: transparent;
   display: inline-block;
   vertical-align: text-bottom;
   outline: 0;
   cursor: pointer;
 }
+
 .close-icon:after {
   content: "X";
   display: block;
@@ -250,7 +251,7 @@ ul.sidebar .sidebar-header a {
   height: 15px;
   position: absolute;
   background-color: #dcdfeb;
-  z-index:1;
+  z-index: 1;
   right: 50px;
   top: 0;
   bottom: 0;
@@ -264,6 +265,7 @@ ul.sidebar .sidebar-header a {
   box-shadow: 0 0 2px #65e563;
   cursor: pointer;
 }
+
 .search-input:not(:valid) ~ .close-icon {
   display: none;
 }
@@ -285,41 +287,42 @@ ul.sidebar .sidebar-header a {
   border: 1px solid #4685dd;
 }
 
-
-
-
-
-
 .redfamily {
   color: red;
 }
-.search-box,.close-icon,.search-wrapper {
+
+.search-box, .close-icon, .search-wrapper {
   position: relative;
   padding: 10px;
 }
+
 .search-wrapperX {
   width: 500px;
   margin: auto;
   margin-top: 50px;
 }
+
 .search-box {
   width: 80%;
   border: 1px solid #ccc;
   outline: 0;
   border-radius: 15px;
 }
+
 .search-box:focus {
   box-shadow: 0 0 15px 5px #b0e0ee;
   border: 2px solid #bebede;
 }
+
 .close-iconX {
-  border:1px solid transparent;
+  border: 1px solid transparent;
   background-color: transparent;
   display: inline-block;
   vertical-align: middle;
   outline: 0;
   cursor: pointer;
 }
+
 .close-iconX:after {
   content: "X";
   display: block;
@@ -327,7 +330,7 @@ ul.sidebar .sidebar-header a {
   height: 15px;
   position: absolute;
   background-color: #FA9595;
-  z-index:1;
+  z-index: 1;
   right: 35px;
   top: 0;
   bottom: 0;
@@ -341,6 +344,7 @@ ul.sidebar .sidebar-header a {
   box-shadow: 0 0 2px #E50F0F;
   cursor: pointer;
 }
+
 .search-box:not(:valid) ~ .close-icon {
   display: none;
 }
