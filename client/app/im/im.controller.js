@@ -2,12 +2,12 @@
 
 angular.module('chatApp')
 
-  .controller('IMContentCtrl', function ($scope, $rootScope, $http, $state, $timeout, $stateParams, socket) {
+  .controller('IMContentCtrl', function ($scope, $rootScope, $http, $state, $timeout, $stateParams, socket, IMStore) {
     $scope.inputText = '';
     $scope.messages = [];
     $scope.scrollDown = true;
     $scope.isTyping = false;
-    $scope.imName = $rootScope.stateParam = $stateParams.im;
+    $scope.imName = $stateParams.im;
 
 
     $http.get('/api/user/' + $scope.imName).then(function (success) {

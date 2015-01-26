@@ -11,4 +11,11 @@ var ImSchema = new Schema({
   is_user_deleted: Boolean
 });
 
+
+ImSchema
+  .pre('save', function (next) {
+    this.SEQ = 'D' + Math.floor((Math.random() * 100000000) + 1);
+    next();
+  });
+
 module.exports = mongoose.model('Im', ImSchema);

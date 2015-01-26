@@ -2,19 +2,16 @@
 
 angular.module('chatApp')
 
-  .controller('SidebarCtrl', function ($scope, $rootScope, $http, $state, $stateParams, $modal, $timeout, socket, Auth) {
+  .controller('SidebarCtrl', function ($scope, $rootScope, $http, $state, $stateParams, $modal, $timeout, socket, Auth, ChannelStore, IMStore, UserStore) {
     // $scope.activeChannel = "general";
     $scope.drawerOpen = false;
-
-    $rootScope.$on('$stateChangeEnd', function (event, next) {
-      console.log($state.params);
-    });
 
     $rootScope.currentUser = $scope.currentUser = Auth.getCurrentUser();
 
 
     $http.get('/api/users/').success(function (results) {
       $scope.users = results;
+      console.log(results);
     });
 
     $http.get('/api/channels/').success(function (results) {
@@ -23,12 +20,14 @@ angular.module('chatApp')
     });
 
     $scope.switchChannel = function (channel) {
+      ChannelStore.save(channel);
       $state.go('index.channel', {channel: channel.name});
       $scope.activeChannel = channel.name
     };
 
-    $scope.switchIM = function (user) {
-      $state.transitionTo('index.im', {im: user.username}, {reload: false})
+    $scope.switchIM = function (im) {
+      IMStore.save(im);
+      $state.transitionTo('index.im', {im: im.username}, {reload: false})
     };
 
     $scope.openDrawer = function () {
@@ -87,4 +86,49 @@ angular.module('chatApp')
     $scope.cancel = function () {
       $scope.modalInstance.dismiss('cancel');
     };
+  })
+
+  .factory('ChannelStore', function () {
+    var self = this;
+    var ChannelStore = {};
+
+    ChannelStore.save = function (obj) {
+      self.channel = obj;
+    };
+
+    ChannelStore.get = function () {
+      return self.channel;
+    };
+
+    return ChannelStore;
+  })
+
+  .factory('UserStore', function () {
+    var self = this;
+    var UserStore = {};
+
+    UserStore.save = function (obj) {
+      self.channel = obj;
+    };
+
+    UserStore.get = function () {
+      return self.channel;
+    };
+    return UserStore;
+  })
+
+  .factory('IMStore', function () {
+    var self = this;
+    var IMStore = {};
+
+    IMStore.save = function (obj) {
+      self.channel = obj;
+    };
+
+    IMStore.get = function () {
+      return self.channel;
+    };
+
+    return IMStore;
   });
+

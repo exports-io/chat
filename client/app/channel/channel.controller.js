@@ -7,7 +7,7 @@ angular.module('chatApp')
     $scope.messages = [];
     $scope.scrollDown = true;
     $scope.isTyping = false;
-    $scope.channelName = $rootScope.stateParam = $stateParams.channel;
+    $scope.channelName = $stateParams.channel;
 
     $http.get('/api/channels/' + $scope.channelName).then(function (success) {
       $scope.thisChannel = success.data[0];
@@ -68,7 +68,6 @@ angular.module('chatApp')
     socket.socket.on('isTyping', function (data) {
       $scope.isTyping = true;
       $scope.userTyping = data.user;
-      console.log(data);
     });
 
     socket.socket.on('isNotTyping', function () {
