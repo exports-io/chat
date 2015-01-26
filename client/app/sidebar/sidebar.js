@@ -12,6 +12,6 @@ angular.module('chatApp')
             controller: 'SidebarCtrl'
           }
         }
-      })
+      });
 
   });

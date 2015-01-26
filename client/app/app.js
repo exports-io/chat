@@ -22,7 +22,9 @@ angular.module('chatApp', [
 
     $urlRouterProvider.rule(function ($injector, $location) {
       var path = $location.path(), normalized = path.toLowerCase();
-      if (path != normalized) return normalized;
+      if (path !== normalized) {
+        return normalized;
+      }
     });
 
     $locationProvider.html5Mode(true);

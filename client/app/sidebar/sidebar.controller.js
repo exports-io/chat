@@ -22,12 +22,12 @@ angular.module('chatApp')
     $scope.switchChannel = function (channel) {
       ChannelStore.save(channel);
       $state.go('index.channel', {channel: channel.name});
-      $scope.activeChannel = channel.name
+      $scope.activeChannel = channel.name;
     };
 
     $scope.switchIM = function (im) {
       IMStore.save(im);
-      $state.transitionTo('index.im', {im: im.username}, {reload: false})
+      $state.transitionTo('index.im', {im: im.username}, {reload: false});
     };
 
     $scope.openDrawer = function () {
@@ -65,7 +65,7 @@ angular.module('chatApp')
   })
 
 
-  .controller('ModalInstanceCtrl', function ($scope, $rootScope, $http, socket) {
+  .controller('ModalInstanceCtrl', function ($scope, $rootScope) {
 
     $scope.newChannel = {
       name: '',

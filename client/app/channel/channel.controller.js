@@ -19,7 +19,7 @@ angular.module('chatApp')
 
     $http.get('/api/chats/' + $scope.channelName).success(function (results) {
       $scope.messages = results;
-      socket.syncUpdates('chat', $scope.messages);
+      socket.syncUpdates('chat', $scope.messages); // need to check what is 'synced' here
     });
 
 
@@ -37,11 +37,11 @@ angular.module('chatApp')
       };
 
       var obj = {
-        user: $scope.currentUser,
+        user: $scope.currentUser, // use name and SEQ only
         channel: $scope.channelName
       };
 
-      socket.socket.emit('stopTyping', obj);
+      socket.socket.emit('stopTyping', obj); // need to send less information here (only vitals)
       $http.post('/api/chats', tempMsg);
       $scope.inputText = '';
       $scope.scrollDown = true;
@@ -50,39 +50,41 @@ angular.module('chatApp')
     var timeout = null;
     $scope.setTyping = function () {
       var obj = {
-        user: $scope.currentUser,
+        user: $scope.currentUser, // use name and SEQ only
         channel: $scope.channelName
       };
 
-      socket.socket.emit('startTyping', obj);
+      socket.socket.emit('startTyping', obj); // use io.to('some room').emit('some event') to broadcast to the specific room
+
+      // look into socket.rooms to see all rooms (might be server only code)
 
       if (timeout) {
         $timeout.cancel(timeout);
       }
 
       timeout = $timeout(function () {
-        socket.socket.emit('stopTyping', obj);
+        socket.socket.emit('stopTyping', obj); // get rid of this
       }, 4000);
     };
 
-    socket.socket.on('isTyping', function (data) {
+    socket.socket.on('isTyping', function (data) { // make a timeout here if recevied 'isTyping' event --> no need to check for stop typing
       $scope.isTyping = true;
       $scope.userTyping = data.user;
     });
 
-    socket.socket.on('isNotTyping', function () {
+    socket.socket.on('isNotTyping', function () { // might not be necessary
       $scope.isTyping = false;
     });
 
     $scope.$on('$destroy', function () {
-      socket.socket.emit('leave', {channel: $scope.channelName});
-      socket.unsyncUpdates('chat');
+      socket.socket.emit('leave', {channel: $scope.channelName}); // might not need  to join rooms
+      socket.unsyncUpdates('chat'); // unsync messages here
     });
 
   })
 
 
-  .directive('enterSubmit', function () {
+  .directive('enterSubmit', function () { // make directive out of input
     return {
       restrict: 'A',
       link: function (scope, elem, attrs) {
@@ -98,5 +100,5 @@ angular.module('chatApp')
           }
         });
       }
-    }
+    };
   });
