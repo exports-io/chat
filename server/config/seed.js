@@ -4,6 +4,7 @@ var User = require('../api/user/user.model');
 var Channel = require('../api/channel/channel.model');
 
 Channel.find({}).remove(function () {
+
   Channel.create({
     name: "general",
     is_channel: true,
