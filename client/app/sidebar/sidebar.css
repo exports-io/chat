@@ -238,6 +238,7 @@ ul.sidebar .sidebar-header a {
   top: 0;
   left: 220px;
   right: 0;
+  line-height: 50px;
   height: 50px;
   width: 100%;
   background: #f4f4f4;
@@ -260,11 +261,13 @@ ul.sidebar .sidebar-header a {
   font-family: Lato, sans-serif;
   font-size: 22px;
 }
+
 .page-title-icon {
   color: #aeaeae;
   font-family: Lato, sans-serif;
   font-size: 22px;
 }
+
 .page-title-active {
   color: #8bdc8c;
   font-size: 15px;
@@ -364,7 +367,6 @@ ul.sidebar .sidebar-header a {
   position: relative;
   padding: 10px;
 }
-
 
 .search-box {
   width: 80%;
