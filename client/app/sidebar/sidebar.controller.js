@@ -23,11 +23,17 @@ angular.module('chatApp')
       ChannelStore.save(channel);
       $state.go('index.channel', {channel: channel.name});
       $scope.activeChannel = channel.name;
+      $scope.activeChatName = channel.name
+      $scope.activeChatIcon = '#'
+      $scope.activeChatOnline = ''
     };
 
     $scope.switchIM = function (im) {
       IMStore.save(im);
       $state.transitionTo('index.im', {im: im.username}, {reload: false});
+      $scope.activeChatName = im.username
+      $scope.activeChatIcon = '@'
+      $scope.activeChatOnline = ''
     };
 
     $scope.openDrawer = function () {

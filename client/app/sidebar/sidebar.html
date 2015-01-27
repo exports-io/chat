@@ -26,8 +26,8 @@
       <li class="current-user">
         <img class="current-user-avatar" src="http://www.desa-net.com/exports_io/U037BREDX_32.jpg" alt=""/></span>
         <span class="current-user-name">{{currentUser.name}}</span>
+        <span class="current-user-status"><i class="fa fa-circle presence_icon" ng-class="{connected: 'icon-green'}"></i> online</span>
       </li>
-
       <li class="current-user-toggle btn-group dropup" dropdown>
         <button class="dropdown-toggle"><span class="fa fa-chevron-up"></span></button>
         <ul class="dropdown-menu" role="menu">
@@ -39,24 +39,32 @@
           <li><a ng-click="logout()"><i class="fa fa-sign-out"></i> Sign Out</a></li>
         </ul>
       </li>
-      <span class="current-user-status"><i class="fa fa-circle presence_icon" ng-class="{connected: 'icon-green'}"></i> online</span>
     </ul>
   </div>
 
+  <div class="row header">
 
-  <div class="search-container">
-
-    <div class="search-wrapper">
-      <form>
-        <input type="text" required class="search-input" placeholder="Search">
-        <button class="close-icon" type="reset"></button>
-      </form>
+    <div class="header-title">
+      <span class="page-title-icon">{{activeChatIcon}}</span><span class="page-title">{{activeChatName}}</span>
+      <span class="page-title-active"><i class="fa fa-circle" ng-class="{connected: 'icon-green'}"></i></span>
     </div>
 
-    <a ng-click="openDrawer()">
-      <i class="fa fa-angle-left fa-drawer-closed" ng-if="!drawerOpen"></i>
-      <i class="fa fa-angle-right fa-drawer-open" ng-if="drawerOpen"></i>
-    </a>
+    <div class="header-search">
+
+        <form class="search-wrapper">
+          <input type="text" required class="search-input" placeholder="Search">
+          <button class="close-icon" type="reset"></button>
+        </form>
+
+
+      <div class="drawe">
+      <a ng-click="openDrawer()">
+        <i class="fa fa-angle-left fa-drawer-closed" ng-if="!drawerOpen"></i>
+        <i class="fa fa-angle-right fa-drawer-open" ng-if="drawerOpen"></i>
+      </a>
+      </div>
+
+    </div>
 
   </div>
 
