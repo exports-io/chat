@@ -35,15 +35,16 @@
   </div>
 </div>
 
-
-<text-input ng-model="inputText" ng-enter="sendMessage(inputText)"></text-input>
-
-
 <!--
-<div class="textfield-footer">
- <div>
-  <textarea class="input-textarea" ng-model="inputText" ng-change="setTyping()" enter-submit="sendMessage(inputText)" ng-class="{'input-drawer-open': drawerOpen}"></textarea>
-    <span class="isTyping" ng-if="isTyping"><span class="isType-name">{{userTyping.name}}</span> is typing ...</span>
-  </div>
-</div>
+<text-input ng-model="inputText"
+            ng-enter="sendMessage(inputText)"
+            ng-change="setTyping()"
+            ng-if="isTyping">
+</text-input>
+
 -->
+
+<div class="textfield-footer">
+  <textarea class="input-textarea" ng-model="inputText" ng-change="setTyping()" enter-submit="sendMessage(inputText)" ng-class="{'input-drawer-open': drawerOpen}"></textarea>
+  <span class="isTyping" ng-if="isTyping"><span class="isType-name">{{userTyping.name}}</span> is typing ...</span>
+</div>

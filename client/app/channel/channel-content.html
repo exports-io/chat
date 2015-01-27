@@ -14,6 +14,7 @@
 
       <div class="channel-header">
         <h4># {{channelName}}</h4>
+
         <p>This is the very beginning of the <em>#{{thisChannel.name}}</em> channel, which you created {{thisChannel.created | date:'shortDate'}}</p>
         <hr>
       </div>
@@ -35,8 +36,16 @@
   </div>
 </div>
 
+<!--
+<text-input ng-model="inputText"
+            ng-enter="sendMessage(inputText)"
+            change="setTyping()"
+            isTyping="isTyping">
+</text-input>
+-->
+
+
 <div class="textfield-footer">
   <textarea class="input-textarea" ng-model="inputText" ng-change="setTyping()" enter-submit="sendMessage(inputText)" ng-class="{'input-drawer-open': drawerOpen}"></textarea>
   <span class="isTyping" ng-if="isTyping"><span class="isType-name">{{userTyping.name}}</span> is typing ...</span>
 </div>
-

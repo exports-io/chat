@@ -431,7 +431,6 @@ ul.sidebar .sidebar-header a {
   width: calc(100% - 400px) !important;
 }
 
-
 /*
  * Content
  */
@@ -444,7 +443,7 @@ ul.sidebar .sidebar-header a {
   left: 220px;
   margin-top: 50px;
   margin-bottom: 80px;
-  height: calc(100% - 130px);
+  height: calc(100% - 120px);
   box-sizing: border-box;
   overflow-y: scroll;
 }
@@ -532,29 +531,28 @@ a.message-sender {
  */
 .textfield-footer {
   position: fixed;
-  height: 80px;
+  height: 70px;
   bottom: 0;
-  padding: 0px;
   left: 220px;
-  min-width: 600px;
-  right: 0px;
+  right: 0;
+  margin: 0 24px;
   z-index: 10;
   background: #FFFFFF;
 }
 
-.textfield-footer > div {
-  margin: 10px 20px;
-}
-
 .textfield-footer .input-textarea {
-  position: relative;
-  padding: 5px 10px;
-  height: 40px;
-  min-height: 40px !important;
+  position: absolute;
+  padding: 9px 30px 9px 8px;
+  font-size: 15px;
+  line-height: 19px;
+  max-height: 160px;
+  height: 38px;
+  bottom: 25px;
+  min-height: 41px !important;
   width: 100%;
   border: 2px solid #c5c5c5;
   border-radius: 2px;
-  overflow: hidden;
+  overflow-y: hidden;
   resize: none !important;
 }
 
@@ -564,13 +562,15 @@ a.message-sender {
 }
 
 .isTyping {
+  position: absolute;
+  bottom: 8px;
   color: #929292;
   font-size: 12px;
   font-style: italic;
 }
 
 .isType-name {
-  font-weight: bolder;
+  font-weight: 900;
 }
 
 .message-divider {

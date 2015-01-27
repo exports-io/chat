@@ -36,12 +36,6 @@ angular.module('chatApp')
         ts: moment().valueOf()
       };
 
-      var obj = {
-        user: $scope.currentUser, // TODO: use name and SEQ only
-        channel: $scope.channelName
-      };
-
-      socket.socket.emit('stopTyping', obj); // TODO: need to send less information here (only vitals)
       $http.post('/api/chats', tempMsg);
       $scope.inputText = '';
       $scope.scrollDown = true;
@@ -49,6 +43,7 @@ angular.module('chatApp')
 
     var timeout = null;
     $scope.setTyping = function () {
+      console.log('is typing');
       var obj = {
         user: $scope.currentUser, // TODO: use name and SEQ only
         channel: $scope.channelName
@@ -57,24 +52,21 @@ angular.module('chatApp')
       socket.socket.emit('startTyping', obj); // TODO: use io.to('some room').emit('some event') to broadcast to the specific room
 
       // TODO: look into socket.rooms to see all rooms (might be server only code)
+    };
+
+    socket.socket.on('isTyping', function (data) {
+      $scope.isTyping = true;
+      $scope.userTyping = data.user;
 
       if (timeout) {
         $timeout.cancel(timeout);
       }
 
       timeout = $timeout(function () {
-        socket.socket.emit('stopTyping', obj); // TODO: get rid of this
+        $scope.isTyping = false;
       }, 4000);
-    };
-
-    socket.socket.on('isTyping', function (data) { // TODO: make a timeout here if recevied 'isTyping' event --> no need to check for stop typing
-      $scope.isTyping = true;
-      $scope.userTyping = data.user;
     });
 
-    socket.socket.on('isNotTyping', function () { // TODO: might not be necessary
-      $scope.isTyping = false;
-    });
 
     $scope.$on('$destroy', function () {
       socket.socket.emit('leave', {channel: $scope.channelName}); // TODO: might not need  to join rooms
