@@ -11,9 +11,9 @@
 <div class="content-wrapper" scroll-glue="scrollDown" ng-class="{'drawer-open': drawerOpen}">
   <div class="row">
     <div class="col-xs-12">
-      <div class="channel-header">
-        <h3># {{channelName}}</h3>
 
+      <div class="channel-header">
+        <h4># {{channelName}}</h4>
         <p>This is the very beginning of the <em>#{{thisChannel.name}}</em> channel, which you created {{thisChannel.created | date:'shortDate'}}</p>
         <hr>
       </div>
@@ -21,7 +21,7 @@
       <div class="message-container">
         <div class="message-group" ng-repeat="msg in messages" ng-class="{'show-user' : msg.user != messages[$index -1].user || (msg.ts - messages[$index - 1].ts) >= 300000}">
           <div ng-if="msg.user != messages[$index -1].user || (msg.ts - messages[$index - 1].ts)  >= 300000 ">
-            <img class="message-avatar" src="../assets/avatar.jpg" alt=""/>
+            <img class="message-avatar" src="http://www.desa-net.com/exports_io/U037BREDX_32.jpg" alt=""/>
             <a class="message-sender">{{msg.user}}</a>
             <span class="message-ts">{{msg.ts | date:'shortTime'}}</span>
           </div>
@@ -35,10 +35,10 @@
   </div>
 </div>
 
-
 <div class="textfield-footer">
   <div>
     <textarea class="input-textarea" ng-model="inputText" ng-change="setTyping()" enter-submit="sendMessage(inputText)" ng-class="{'input-drawer-open': drawerOpen}"></textarea>
     <span class="isTyping" ng-if="isTyping"><span class="isType-name">{{userTyping.name}}</span> is typing ...</span>
   </div>
 </div>
+
