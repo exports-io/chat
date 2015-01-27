@@ -51,17 +51,17 @@
 
     <div class="header-search">
 
-        <form class="search-wrapper">
-          <input type="text" required class="search-input" placeholder="Search">
-          <button class="close-icon" type="reset"></button>
-        </form>
+      <form class="search-wrapper">
+        <input class="search-input" type="search" required  placeholder="Search">
+        <button class="search-input-icon-close" type="reset"></button>
+      </form>
 
 
-      <div class="drawe">
-      <a ng-click="openDrawer()">
-        <i class="fa fa-angle-left fa-drawer-closed" ng-if="!drawerOpen"></i>
-        <i class="fa fa-angle-right fa-drawer-open" ng-if="drawerOpen"></i>
-      </a>
+      <div class="drawer">
+        <a ng-click="openDrawer()">
+          <i class="fa fa-angle-left fa-drawer-closed" ng-if="!drawerOpen"></i>
+          <i class="fa fa-angle-right fa-drawer-open" ng-if="drawerOpen"></i>
+        </a>
       </div>
 
     </div>
@@ -70,6 +70,7 @@
 
   <div class="drawer-container" ng-if="drawerOpen">
     <h2>Files</h2>
+
     <p>View and search files : content missing</p>
   </div>
 
