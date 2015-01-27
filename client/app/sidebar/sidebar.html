@@ -49,18 +49,19 @@
       <span class="page-title-active"><i class="fa fa-circle" ng-class="{connected: 'icon-green'}"></i></span>
     </div>
 
-    <div class="header-search">
-      <form class="search-wrapper">
-        <input class="search-input" type="search" required placeholder="Search">
-        <button class="search-input-icon-close" type="reset"></button>
-      </form>
-    </div>
-
-    <div class="drawer">
-      <a ng-click="openDrawer()">
-        <i class="fa fa-angle-left fa-2x fa-drawer-closed" ng-if="!drawerOpen"></i>
-        <i class="fa fa-angle-right fa-2x fa-drawer-open" ng-if="drawerOpen"></i>
-      </a>
+    <div class="header-group">
+      <div class="header-search">
+        <form class="search-wrapper">
+          <input class="search-input" type="search" required placeholder="Search">
+          <button class="search-input-icon-close" type="reset"></button>
+        </form>
+      </div>
+      <div class="drawer">
+        <a ng-click="openDrawer()">
+          <i class="fa fa-angle-left fa-2x fa-drawer-closed" ng-if="!drawerOpen"></i>
+          <i class="fa fa-angle-right fa-2x fa-drawer-open" ng-if="drawerOpen"></i>
+        </a>
+      </div>
     </div>
 
   </div>
