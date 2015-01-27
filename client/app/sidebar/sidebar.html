@@ -11,7 +11,6 @@
         <a ng-click="switchChannel(channel)"><span class="channel-hashtag">#</span>{{channel.name}}</a>
       </li>
 
-      <li><br></li>
       <li class="sidebar-title"><span>Direct Messages</span></li>
       <li class="sidebar-list" ng-repeat="user in users">
         <a ng-click="switchIM(user)">
@@ -19,32 +18,31 @@
           <span class="im-title">{{user.name}}</span>
         </a>
       </li>
-      <li><br></li>
+
       <li class="sidebar-title"><span>Private Groups</span></li>
     </ul>
 
-    <div class="sidebar-footer">
-      <div class="current-user">
-        <!--<img class="current-user-avatar">-->
+    <ul class="sidebar-footer">
+      <li class="current-user">
+        <img class="current-user-avatar" src="http://www.desa-net.com/exports_io/U037BREDX_32.jpg" alt=""/></span>
         <span class="current-user-name">{{currentUser.name}}</span>
+      </li>
 
-        <div class="current-user-toggle btn-group current-user-toggle dropup" dropdown>
-          <button class="dropdown-toggle"><span class="fa fa-chevron-up"></span></button>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="">Preferences</a></li>
-            <li><a href="">Your Account</a></li>
-            <li><a href="">Your Profile</a></li>
-            <li><a href="">Change your Photo</a></li>
-            <li class="divider"></li>
-            <li><a ng-click="logout()"><i class="fa fa-sign-out"></i> Sign Out</a></li>
-          </ul>
-        </div>
-
-        <span class="current-user-status"><i class="fa fa-circle presence_icon" ng-class="{connected: 'icon-green'}"></i> online</span>
-
-      </div>
-    </div>
+      <li class="current-user-toggle btn-group dropup" dropdown>
+        <button class="dropdown-toggle"><span class="fa fa-chevron-up"></span></button>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="">Preferences</a></li>
+          <li><a href="">Your Account</a></li>
+          <li><a href="">Your Profile</a></li>
+          <li><a href="">Change your Photo</a></li>
+          <li class="divider"></li>
+          <li><a ng-click="logout()"><i class="fa fa-sign-out"></i> Sign Out</a></li>
+        </ul>
+      </li>
+      <span class="current-user-status"><i class="fa fa-circle presence_icon" ng-class="{connected: 'icon-green'}"></i> online</span>
+    </ul>
   </div>
+
 
   <div class="search-container">
 
@@ -62,12 +60,12 @@
 
   </div>
 
-  <div ui-view="content"></div>
-
   <div class="drawer-container" ng-if="drawerOpen">
     <h2>Files</h2>
-    <p>View and search files</p>
+    <p>View and search files : content missing</p>
   </div>
+
+  <div ui-view="content"></div>
 
 </div>
 
