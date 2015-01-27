@@ -356,7 +356,7 @@ ul.sidebar .sidebar-header a {
  * SEARCH --> DRAWER
  */
 
-.drawer{
+.drawer {
   padding: 0px;
   float: left;
   height: 50px;
@@ -393,7 +393,6 @@ ul.sidebar .sidebar-header a {
   z-index: 100;
   border-left: 1px solid #EEEEEE;
 }
-
 
 .drawer-open {
   width: calc(100% - 400px - 220px) !important;
