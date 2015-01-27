@@ -11,15 +11,15 @@ angular.module('chatApp')
 
 
     $http.get('/api/user/' + $scope.imName).then(function (success) {
-      console.log(success);
+      //console.log(success);
     }, function (error) {
-      console.log(error);
+      //console.log(error);
     });
 
     $http.get('/api/im/' + $scope.imName).then(function (success) {
       $scope.thisIM = success.data[0];
     }, function (error) {
-      console.log(error);
+      //console.log(error);
     });
 
     socket.socket.emit('join', {channel: $scope.channelName});
