@@ -14,17 +14,12 @@ angular.module('chatApp')
       IM.users(users).then(function (success) {
         $scope.thisIM = success.data[0];
 
-        console.log(success.data[0]);
-
-
         socket.socket.emit('join', {SEQ: $scope.thisIM.SEQ});
 
         $http.get('/api/chats/SEQ/' + $scope.thisIM.SEQ).success(function (results) {
           $scope.messages = results;
-          console.log(results);
           socket.syncUpdates('chat', $scope.messages);
         });
-
 
       }, function (error) {
         console.log(error);

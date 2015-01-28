@@ -50,7 +50,7 @@ angular.module('chatApp', [
     };
   })
 
-  .run(function ($rootScope, $location, Auth, socket) {
+  .run(function ($rootScope, $location, $state, Auth, socket) {
     $rootScope.connectedUsers = [];
 
     $rootScope.$on('$stateChangeStart', function (event, next) {
@@ -59,6 +59,7 @@ angular.module('chatApp', [
           $location.path('/login');
         }
       });
+
     });
 
     socket.socket.emit('userConnected', Auth.getCurrentUser());

@@ -3,11 +3,10 @@
 angular.module('chatApp')
 
   .controller('SidebarCtrl', function ($scope, $rootScope, $http, $state, $stateParams, $modal, $timeout, socket, Auth, ChannelStore, IMStore) {
-    // $scope.activeChannel = "general";
+    $scope.activeChannel = $state.params.im || $state.params.channel || "";
     $scope.drawerOpen = false;
 
     $rootScope.currentUser = $scope.currentUser = Auth.getCurrentUser();
-
 
     $http.get('/api/users/').success(function (results) {
       $scope.users = results;
@@ -30,7 +29,7 @@ angular.module('chatApp')
     $scope.switchIM = function (im) {
       IMStore.save(im);
       $state.transitionTo('index.im', {im: im.username}, {reload: false});
-      $scope.activeChatName = im.username;
+      $scope.activeChannel = im.username;
       $scope.activeChatIcon = '@';
       $scope.activeChatOnline = '';
     };
