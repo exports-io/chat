@@ -166,61 +166,74 @@ ul.sidebar .sidebar-header a {
  */
 .sidebar-footer {
   position: absolute;
-  height: 60px;
+  float: left;
+  padding: 10px 0 10px 8px;
   bottom: 0;
+  height: 66px;
   width: 220px;
-  padding: 0;
-  margin: 0;
   transition: all .6s ease 0s;
   color: #ffffff;
 }
 
 .current-user-avatar {
-  position: absolute;
-  top: 7px;
-  left: 10px;
-  margin-top: 4px;
   border-radius: 4px;
-  display: inline;
+  margin: 0 10px 0 0;
+  display: block;
   float: left;
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
 }
 
 .sidebar-footer .current-user-name {
-  display: inline-block;
-  position: absolute;
-  left: 27px;
-  margin-left: 30px;
+  margin-top: 5px;
+  display: block;
   font-size: 16px;
   font-weight: 400;
   line-height: 20px;
-  padding-top: 8px;
 }
 
 .sidebar-footer .current-user-status {
-  position: absolute;
-  padding-top: 32px;
-  margin-left: 62px;
+  display: block;
+  font-size: 13px;
+  line-height: 24px;
   font-weight: 400;
   letter-spacing: 1px;
   color: #8ccb98;
 }
 
+.current-user-toggle {
+  display: block;
+  float: right;
+  bottom: 38px;
+  right: 16px;
+  color: #738bc0;
+  box-shadow: none;
+}
+
+.current-user-toggle:hover,
+.current-user-toggle:active {
+  color: white;
+  box-shadow: none;
+}
+
+.btn-group.open .dropdown-toggle {
+  color: white;
+  box-shadow: none;
+}
+
 .current-user-toggle .dropdown-toggle {
+  bottom: 20px;
+  float: right;
+  font-size: 16px;
   background: none;
   border: none;
-  padding-top: 0px;
-  margin-left: 190px;
-  vertical-align: text-bottom;
 }
 
 .current-user-toggle .dropdown-menu {
   bottom: 50px;
-  left: 10px;
+  left: -160px;
   width: 200px;
   background-color: #ffffff;
-  opacity: 0.98;
   overflow: scroll;
   z-index: 1000 !important;
 }
@@ -233,6 +246,7 @@ ul.sidebar .sidebar-header a {
 /*
  * Header
  */
+
 .row.header {
   position: fixed;
   top: 0;
@@ -278,90 +292,66 @@ ul.sidebar .sidebar-header a {
  * Search Container
  */
 
+.header-group {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  z-index: 999;
+}
+
 .header-search {
-  padding: 0px;
   float: left;
   height: 50px;
-  width: 18%;
   vertical-align: text-bottom;
 }
 
 .search-wrapper {
-  position: relative;
+  display: inline;
   padding: 8px;
   width: 180px;
   height: 50px;
 }
 
 .search-input {
-  border: 1px solid #808080;
-  min-width: 180px;
+  border: 1px solid #a7a7a7;
+  min-width: 280px;
   line-height: 20px;
   margin-top: 0px;
   margin-right: 10px;
-  border-radius: 15px;
+  border-radius: 6px;
   padding: 5px 15px;
   vertical-align: text-bottom;
 }
 
-.search-input:focus {
+.search-input:focus,
+.search-input:active {
   outline: none;
-  box-shadow: 0 0 2px 2px #b0e0ee;
-  border: 2px solid #bebede;
+  border: 1px solid #2b3e62;
 }
 
-.search-input-icon-close:after {
-  content: ".";
-  display: block;
-  width: 18px;
-  height: 18px;
-  position: absolute;
-  background-color: #d2d4e0;
-  right: 1px;
-  top: 0;
-  bottom: 0;
-  margin: auto;
-  padding: 2px;
-  border-radius: 50%;
-  text-align: center;
-  color: #ff977e;
-  font-weight: normal;
-  font-size: 12px;
-  box-shadow: 0 0 1px #132a12;
-  cursor: pointer;
-}
-
-.search-input:not(:valid) ~ .search-input-icon-close {
-  display: none;
-}
-
-.search-container a > .fa {
+.drawer-toggle {
+  padding: 0;
   float: right;
-  margin-top: 8px;
-  padding: 10px 12px;
-  font-size: 22px;
-  line-height: 10px;
-  border: 1px solid #808080;
-  border-radius: 200px;
-  color: #000000;
-}
-
-.search-container a > .fa:hover,
-.search-container a > .fa:active {
-  color: #3b70ba;
-  border: 1px solid #3666aa;
-}
-
-/*
- * SEARCH --> DRAWER
- */
-
-.drawer {
-  padding: 0px;
-  float: left;
-  height: 50px;
-  width: 18%;
   vertical-align: text-bottom;
+}
+
+.drawer-toggle .drawer-toggle-open {
+  border: 1px solid #2b3e62;
+  color: #2b3e62
+}
+
+.drawer-icon {
+  text-align: center;
+  height: 30px;
+  width: 30px;
+  border-radius: 25px;
+  border: 1px solid #a7a7a7;
+  color: #8d8d8d;
+}
+
+.drawer-icon:hover {
+  border: 1px solid #2b3e62;
+  color: #2b3e62;
 }
 
 .fa-drawer-open {
@@ -373,14 +363,9 @@ ul.sidebar .sidebar-header a {
   border: 1px solid #a7a7a7;
 }
 
-.fa-drawer-closed {
-  text-align: center;
-  height: 30px;
-  width: 30px;
-  border-radius: 15px;
-  background: #fdfdfd;
-  border: 1px solid #a4a4a4;
-}
+/*
+ * SEARCH --> DRAWER
+ */
 
 .drawer-container {
   position: absolute;
