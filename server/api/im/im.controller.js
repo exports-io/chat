@@ -30,7 +30,7 @@ exports.show = function (req, res) {
 exports.users = function (req, res) {
   var users = req.query.users;
   console.log(users);
-  Im.find({users: users}, function (err, im) {
+  Im.find({users: {$all: users}}, function (err, im) {
     if (err) {
       return handleError(res, err);
     }
