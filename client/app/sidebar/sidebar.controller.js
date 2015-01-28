@@ -2,7 +2,7 @@
 
 angular.module('chatApp')
 
-  .controller('SidebarCtrl', function ($scope, $rootScope, $http, $state, $stateParams, $modal, $timeout, socket, Auth, ChannelStore, IMStore, UserStore) {
+  .controller('SidebarCtrl', function ($scope, $rootScope, $http, $state, $stateParams, $modal, $timeout, socket, Auth, ChannelStore, IMStore) {
     // $scope.activeChannel = "general";
     $scope.drawerOpen = false;
 
@@ -11,7 +11,6 @@ angular.module('chatApp')
 
     $http.get('/api/users/').success(function (results) {
       $scope.users = results;
-      console.log(results);
     });
 
     $http.get('/api/channels/').success(function (results) {
@@ -23,17 +22,17 @@ angular.module('chatApp')
       ChannelStore.save(channel);
       $state.go('index.channel', {channel: channel.name});
       $scope.activeChannel = channel.name;
-      $scope.activeChatName = channel.name
-      $scope.activeChatIcon = '#'
+      $scope.activeChatName = channel.name;
+      $scope.activeChatIcon = '#';
       $scope.activeChatOnline = ''
     };
 
     $scope.switchIM = function (im) {
       IMStore.save(im);
       $state.transitionTo('index.im', {im: im.username}, {reload: false});
-      $scope.activeChatName = im.username
-      $scope.activeChatIcon = '@'
-      $scope.activeChatOnline = ''
+      $scope.activeChatName = im.username;
+      $scope.activeChatIcon = '@';
+      $scope.activeChatOnline = '';
     };
 
     $scope.openDrawer = function () {

@@ -12,7 +12,7 @@
       </li>
 
       <li class="sidebar-title"><span>Direct Messages</span></li>
-      <li class="sidebar-list" ng-repeat="user in users">
+      <li class="sidebar-list" ng-repeat="user in users" ng-if="user.SEQ != currentUser.SEQ">
         <a ng-click="switchIM(user)">
           <i class="fa fa-circle presence_icon" ng-class="{connected: 'icon-green'}"></i>
           <span class="im-title">{{user.name}}</span>

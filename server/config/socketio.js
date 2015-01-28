@@ -18,11 +18,11 @@ function onConnect(socketio, socket) {
   require('../api/thing/thing.socket').register(socket);
 
   socket.on('join', function (room) {
-    socket.join(room.channel);
+    socket.join(room.SEQ);
   });
 
   socket.on('leave', function (room) {
-    socket.leave(room.channel);
+    socket.leave(room.SEQ);
   });
 
   socket.on('userConnected', function (user) {

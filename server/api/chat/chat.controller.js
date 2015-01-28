@@ -15,7 +15,7 @@ exports.index = function (req, res) {
 
 // Get a single chat
 exports.show = function (req, res) {
-  Chat.find({channel: req.params.channel}, function (err, chat) {
+  Chat.find({SEQ: req.params.SEQ}, function (err, chat) {
     if (err) {
       return handleError(res, err);
     }

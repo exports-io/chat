@@ -11,7 +11,7 @@ router.get('/', auth.isAuthenticated(), controller.index);
 router.delete('/:id', auth.isAuthenticated(), controller.destroy); // auth.hasRole('admin')
 router.get('/me', auth.isAuthenticated(), controller.me);
 router.put('/:id/password', auth.isAuthenticated(), controller.changePassword);
-router.get('/:username', auth.isAuthenticated(), controller.show);
+router.get('/username/:username', auth.isAuthenticated(), controller.show);
 router.post('/', controller.create);
 
 module.exports = router;
