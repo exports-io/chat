@@ -38,12 +38,10 @@ exports.create = function (req, res, next) {
  * Get a single user
  */
 exports.show = function (req, res, next) {
-  var userName = req.params.username;
-
-  User.find({username: userName}, function (err, user) {
+  User.find({username: req.params.username}, function (err, user) {
     if (err) return next(err);
     if (!user) return res.send(401);
-    res.json(user.profile);
+    res.json(user);
   });
 };
 

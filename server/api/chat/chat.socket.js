@@ -15,18 +15,15 @@ exports.register = function (socketio, socket) {
   });
 
   socket.on("startTyping", function (data) {
-    socket.broadcast.to(data.channel).emit("isTyping", data);
+    socket.broadcast.to(data.SEQ).emit("isTyping", data);
   });
 
-  socket.on("stopTyping", function (data) {
-    socket.broadcast.to(data.channel).emit("isNotTyping", data);
-  });
 };
 
 function onSave(socketio, doc, cb) {
-  socketio.to(doc.channel).emit('chat:save', doc);
+  socketio.to(doc.SEQ).emit('chat:save', doc);
 }
 
 function onRemove(socketio, doc, cb) {
-  socketio.to(doc.channel).emit('chat:remove', doc);
+  socketio.to(doc.SEQ).emit('chat:remove', doc);
 }

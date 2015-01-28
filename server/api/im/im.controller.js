@@ -26,6 +26,47 @@ exports.show = function (req, res) {
   });
 };
 
+
+exports.users = function (req, res) {
+  var users = req.query.users;
+  console.log(users);
+  Im.find({users: users}, function (err, im) {
+    if (err) {
+      return handleError(res, err);
+    }
+    if (!im) {
+      return res.send(404);
+    }
+    return res.json(im);
+  });
+};
+
+
+exports.list = function (req, res) {
+  Im.find({}, function (err, im) {
+    if (err) {
+      return handleError(res, err);
+    }
+    if (!im) {
+      return res.send(404);
+    }
+    return res.json(im);
+  });
+};
+
+// Get a single im
+exports.open = function (req, res) {
+  Im.create(req.body, function (err, im) {
+    if (err) {
+      return handleError(res, err);
+    }
+    if (!im) {
+      return res.send(404);
+    }
+    return res.json(201, im);
+  });
+};
+
 // Creates a new im in the DB.
 exports.create = function (req, res) {
   Im.create(req.body, function (err, im) {

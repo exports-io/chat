@@ -6,7 +6,7 @@ var controller = require('./chat.controller');
 var router = express.Router();
 
 router.get('/', controller.index);
-router.get('/:channel', controller.show);
+router.get('/SEQ/:SEQ', controller.show);
 router.post('/', controller.create);
 router.put('/:id', controller.update);
 router.patch('/:id', controller.update);
