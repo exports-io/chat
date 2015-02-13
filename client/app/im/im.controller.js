@@ -76,7 +76,8 @@ angular.module('chatApp')
         SEQ: $scope.thisIM.SEQ
       };
 
-      socket.socket.emit('startTyping', obj); // TODO: use io.to('some room').emit('some event') to broadcast to the specific room
+      socket.socket.emit('startTyping', obj);
+      // TODO: use io.to('some room').emit('some event') to broadcast to the specific room
       // TODO: look into socket.rooms to see all rooms (might be server only code)
     };
 

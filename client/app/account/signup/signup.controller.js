@@ -5,6 +5,8 @@ angular.module('chatApp')
     $scope.user = {};
     $scope.errors = {};
 
+
+    /*
     $scope.register = function(form) {
       $scope.submitted = true;
 
@@ -30,5 +32,7 @@ angular.module('chatApp')
         });
       }
     };
+
+    */
 
   });

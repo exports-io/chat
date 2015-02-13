@@ -2,50 +2,44 @@
 
 angular.module('chatApp')
 
-  .controller('ChannelContentCtrl', function ($scope, $rootScope, $http, $state, $timeout, $stateParams, socket, Channel) {
+  .controller('ChannelContentCtrl', function ($scope, $rootScope, $http, $state, $timeout, $stateParams, Auth, socket, Chat, ChannelAPI, ChatAPI) {
     $scope.inputText = '';
     $scope.messages = [];
     $scope.scrollDown = true;
     $scope.isTyping = false;
     $scope.channelName = $stateParams.channel;
 
-    $http.get('/api/channels/' + $scope.channelName).then(function (success) {
-      $scope.thisChannel = success.data[0];
+
+    ChannelAPI.getWithName({channel: $scope.channelName}).$promise.then(function (success) {
+      $scope.thisChannel = success[0];
       socket.socket.emit('join', {SEQ: $scope.thisChannel.SEQ});
 
-
-      $http.get('/api/chats/SEQ/' + $scope.thisChannel.SEQ).success(function (results) {
+      ChatAPI.getWithSEQ({SEQ: success[0].SEQ}).$promise.then(function (results) {
         $scope.messages = results;
         socket.syncUpdates('chat', $scope.messages); // TODO: need to check what is 'synced' here
       });
-
-
     }, function (error) {
       console.log(error);
     });
 
 
     var timeout = null;
+
+    // send message to socket + server
     $scope.sendMessage = function () {
       if ($scope.inputText === '') {
         return;
       }
 
-      var tempMsg = {
-        user: $scope.currentUser.name,
-        text: $scope.inputText,
-        SEQ: $scope.thisChannel.SEQ,
-        type: 'message',
-        ts: moment().valueOf()
-      };
-
       if (timeout) {
-        $timeout.cancel(timeout);
+        $timeout.cancel(timeout); // cancel timeout if user is still typing
       }
 
-      $http.post('/api/chats', tempMsg).success(function (response) {
-        console.log('success' + response);
+      var chat = new Chat(Auth.getCurrentUser().name, $scope.inputText, $scope.thisChannel.SEQ); // use
+      chat.post().then(function (result) {
+        console.log(result)
       });
+
       $scope.isTyping = false;
       $scope.inputText = '';
       $scope.scrollDown = true;
@@ -58,8 +52,8 @@ angular.module('chatApp')
         SEQ: $scope.thisChannel.SEQ
       };
 
-      socket.socket.emit('startTyping', obj); // TODO: use io.to('some room').emit('some event') to broadcast to the specific room
-
+      return socket.socket.emit('startTyping', obj);  // emit user is typing
+      // TODO: use io.to('some room').emit('some event') to broadcast to the specific room
       // TODO: look into socket.rooms to see all rooms (might be server only code)
     };
 
