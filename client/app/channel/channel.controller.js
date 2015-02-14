@@ -1,8 +1,11 @@
 'use strict';
 
-angular.module('chatApp')
-
-  .controller('ChannelContentCtrl', function ($scope, $rootScope, $http, $state, $timeout, $stateParams, Auth, socket, Chat, ChannelAPI, ChatAPI) {
+(function () {
+  angular.module('chatApp')
+    .controller('ChannelContentCtrl', ChannelContentCtrl)
+    .directive('enterSubmit', enterSubmit);
+  
+  function ChannelContentCtrl($scope, $timeout, $stateParams, Auth, socket, Chat, ChannelAPI, ChatAPI) {
     $scope.inputText = '';
     $scope.messages = [];
     $scope.scrollDown = true;
@@ -77,11 +80,10 @@ angular.module('chatApp')
       socket.socket.emit('leave', {channel: $scope.thisChannel.SEQ}); // TODO: might not need  to join rooms
       socket.unsyncUpdates('chat'); // TODO: unsync messages here
     });
+  }
 
-  })
 
-
-  .directive('enterSubmit', function () { // TODO: make directive out of input
+  function enterSubmit() {// TODO: make directive out of input
     return {
       restrict: 'A',
       link: function (scope, elem, attrs) {
@@ -98,4 +100,8 @@ angular.module('chatApp')
         });
       }
     };
-  });
+
+  }
+
+
+})();

@@ -2,7 +2,7 @@
 
 angular.module('chatApp')
 
-  .factory('IM', function ($http) {
+  .factory('ImAPI', function ($http) {
 
     return {
       open: function (currentUser, otherUser) {
@@ -32,4 +32,12 @@ angular.module('chatApp')
         });
       }
     }
+  })
+
+  .service('UserAPI', function ($resource) {
+    return $resource('api/users/:id/username/:username', {}, {
+      getAll: {method: 'GET', isArray: true},
+      getWithUsername: {method: 'GET', isArray: true, params: {username: '@username'}},
+      post: {method: 'POST'}
+    })
   });

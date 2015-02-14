@@ -1,33 +1,35 @@
 'use strict';
 
-angular.module('chatApp')
+(function () {
+  angular.module('chatApp')
+    .controller('IMContentCtrl', IMContentCtrl);
 
-  .controller('IMContentCtrl', function ($scope, $rootScope, $http, $state, $timeout, $stateParams, socket, IM, Auth) {
+
+  function IMContentCtrl($scope, $timeout, $stateParams, socket, Chat, ImAPI, UserAPI, ChatAPI, Auth) {
+
     $scope.inputText = '';
     $scope.messages = [];
     $scope.scrollDown = true;
     $scope.isTyping = false;
     $scope.imName = $stateParams.im;
 
-    $http.get('api/users/username/' + $stateParams.im).then(function (success) {
-      var users = [Auth.getCurrentUser().SEQ, success.data[0].SEQ];
-      IM.users(users).then(function (success) {
-        $scope.thisIM = success.data[0];
+    UserAPI.getWithUsername({username: $scope.imName}).$promise.then(function (success) {
+      var users = [Auth.getCurrentUser().SEQ, success[0].SEQ];
 
-        socket.socket.emit('join', {SEQ: $scope.thisIM.SEQ});
+      ImAPI.users(users).then(function (result) {
+        $scope.thisIM = result.data[0];
 
-        $http.get('/api/chats/SEQ/' + $scope.thisIM.SEQ).success(function (results) {
-          $scope.messages = results;
+        socket.socket.emit('join', {SEQ: result.data[0].SEQ});
+
+        ChatAPI.getWithSEQ({SEQ: result.data[0].SEQ}).$promise.then(function (res) {
+          $scope.messages = res;
           socket.syncUpdates('chat', $scope.messages);
         });
 
       }, function (error) {
         console.log(error);
       });
-    }, function (err) {
-      console.log(err)
     });
-
 
     var timeout = null;
     $scope.sendMessage = function () {
@@ -35,21 +37,15 @@ angular.module('chatApp')
         return;
       }
 
-      var tempMsg = {
-        user: $scope.currentUser.name,
-        text: $scope.inputText,
-        SEQ: $scope.thisIM.SEQ,
-        type: 'message',
-        ts: moment().valueOf()
-      };
-
       if (timeout) {
         $timeout.cancel(timeout);
       }
 
-      $http.post('/api/chats', tempMsg).success(function (response) {
-        // console.log('success' + response);
+      var chat = new Chat(Auth.getCurrentUser().name, $scope.inputText, $scope.thisIM.SEQ); // use
+      chat.post().then(function (result) {
+        //console.log(result)
       });
+
       $scope.isTyping = false;
       $scope.inputText = '';
       $scope.scrollDown = true;
@@ -85,4 +81,7 @@ angular.module('chatApp')
       socket.socket.emit('leave', {SEQ: $scope.thisIM.SEQ});
       socket.unsyncUpdates('chat');
     });
-  });
+  }
+
+
+})();
