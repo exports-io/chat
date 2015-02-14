@@ -1,22 +1,23 @@
-'use strict';
+(function () {
+  'use strict';
 
-angular.module('chatApp')
+  angular.module('chatApp')
+    .directive('textInput', textInput);
 
-  .directive('textInput', function () {
+
+  function textInput() {
     return {
+      templateUrl: 'components/textInput/textInput.html',
       restrict: 'E',
+      require: 'ngModel',
       scope: {
         value: '=ngModel',
-        change: '=',
-        ngEnter: '&',
-        isTyping: '='
-        //ngClass: "{'input-drawer-open': drawerOpen}"
+        setTyping: '&',
+        enter: '&',
+        isTyping: '=',
+        userTyping: '=',
+        ngClass: "="
       },
-      require: 'ngModel',
-      template: '<div class="textfield-footer">' +
-      '<textarea class="input-textarea" ng-model="value" ng-change="change"></textarea>' +
-      '<span class="isTyping" ng-if="isTyping"><span class="isType-name">{{userTyping.name}}</span> is typing ...</span>' +
-      '</div>',
       link: function (scope, element, attrs) {
 
         var maxHeight = 160;
@@ -30,18 +31,33 @@ angular.module('chatApp')
         $textarea.originalHeight = $textarea[0].offsetHeight;
         $mainContent.originalHeight = $mainContent[0].offsetHeight;
 
+        scope.$watch('value', function (v) {
+          scope.setTyping.call(v);
+        });
 
         element.bind("keydown", function (event) {
 
-          /*
-           scope.value = $textarea.val().replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/&/g, '&amp;').replace(/\n$/, '<br/>&nbsp;').replace(/\n/g, '<br/>')
-           .replace(/\s{2,}/g, function (space) {
-           return times('&nbsp;', space.length - 1) + ' '
-           });
-           */
-
           if ($textarea[0].offsetHeight >= maxHeight) {
             $textarea.css('overflow-y', 'visible');
+          }
+          else if (event.which === KEY.del) {
+
+            /*
+             if ($textarea[0].offsetHeight > $textarea.originalHeight) {
+
+             if (c.match(/\r/) || c.match(/\n/)) {
+             $textarea.css('height', function () {
+             return $textarea[0].offsetHeight - 19;
+             });
+
+             $mainContent.css('height', function () {
+             return $mainContent[0].offsetHeight + 19;
+             });
+
+             $mainContent[0].scrollTop = $mainContent[0].scrollHeight;
+             }
+             }
+             */
           }
 
           else if (event.which === KEY.ret && event.shiftKey) {
@@ -53,11 +69,13 @@ angular.module('chatApp')
               $mainContent.css('height', function () {
                 return $mainContent[0].offsetHeight - 19;
               });
+
+              $mainContent[0].scrollTop = $mainContent[0].scrollHeight;
             }
           }
           else if (event.which === KEY.ret) {
             scope.$apply(function () {
-              scope.ngEnter();
+              scope.enter();
             });
 
             $textarea.css('height', function () {
@@ -72,5 +90,7 @@ angular.module('chatApp')
           }
         });
       }
-    };
-  });
+    }
+  }
+
+})();

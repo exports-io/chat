@@ -1,11 +1,15 @@
-'use strict';
+(function () {
 
-angular.module('chatApp')
-  .config(function ($stateProvider) {
+  'use strict';
+
+  angular.module('chatApp')
+    .config(config);
+
+  function config($stateProvider) {
     $stateProvider
 
       .state('index.channel', {
-        url: 'messages/{channel:[^@]*}', // perform regex
+        url: 'messages/{channel:[^@]*}', // perform regex to only allow channels (not IMs)
         views: {
           'content@index': {
             templateUrl: 'app/channel/channel-content.html',
@@ -22,7 +26,7 @@ angular.module('chatApp')
 
               chat: function (ChatAPI, channel) {
                 ChatAPI.getWithSEQ({SEQ: channel.SEQ}).$promise.then(function (results) {
-                  console.log(results);
+                  //console.log(results);
                   return results;
                 });
 
@@ -31,4 +35,5 @@ angular.module('chatApp')
           }
         }
       });
-  });
+  }
+})();

@@ -1,0 +1,24 @@
+[
+  {
+    "provider": "local",
+    "username": "pbernasconi",
+    "name": "Paolo Bernasconi",
+    "email": "p@ex.io",
+    "password": "pass"
+  },
+  {
+    "provider": "local",
+    "username": "marco_b",
+    "name": "Marco Bernasconi",
+    "email": "m@ex.io",
+    "password": "pass"
+  },
+  {
+    "provider": "local",
+    "role": "admin",
+    "username": "admin",
+    "name": "Admin",
+    "email": "admin@admin.com",
+    "password": "admin"
+  }
+]

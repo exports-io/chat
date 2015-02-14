@@ -1,0 +1,40 @@
+[
+  {
+    "name": "general",
+    "is_channel": true,
+    "created": "",
+    "creator": "@paolo",
+    "is_archived": false,
+    "is_general": true,
+    "is_member": true,
+    "purpose": {
+      "value": "general purpose",
+      "creator": "@paolo",
+      "last_set": 0
+    },
+    "topic": {
+      "value": "topic value",
+      "creator": "@paolo",
+      "last_set": 0
+    }
+  },
+  {
+    "name": "random",
+    "is_channel": true,
+    "created": "",
+    "creator": "@paolo",
+    "is_archived": false,
+    "is_general": true,
+    "is_member": true,
+    "purpose": {
+      "value": "random purpose",
+      "creator": "@paolo",
+      "last_set": 0
+    },
+    "topic": {
+      "value": "random topic value",
+      "creator": "@paolo",
+      "last_set": 0
+    }
+  }
+]
