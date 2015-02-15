@@ -4,15 +4,35 @@ var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
 var ChannelSchema = new Schema({
-  SEQ: String,
-  name: {type: String, unique: true},
-  is_channel: Boolean,
-  created: {type: Date, default: Date.now},
-  creator: String,
-  is_archived: Boolean,
-  is_general: Boolean,
-  is_member: Boolean,
-  members: [String],
+  SEQ: {
+    type: String
+  },
+  name: {
+    type: String,
+    lowercase: true,
+    unique: true
+  },
+  is_channel: {
+    type: Boolean
+  },
+  created: {
+    type: Date, default: Date.now
+  },
+  creator: {
+    type: String
+  },
+  is_archived: {
+    type: Boolean
+  },
+  is_general: {
+    type: Boolean
+  },
+  is_member: {
+    type: Boolean
+  },
+  members: [
+    {type: String}
+  ],
   purpose: {
     value: String,
     creator: String,

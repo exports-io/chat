@@ -14,14 +14,15 @@ var config = require('./config/environment');
 // Connect to database
 mongoose.connect(config.mongo.uri, config.mongo.options);
 
-// Populate DB with sample data
-if(config.seedDB) { require('./config/seed'); }
-
 // Setup server
 var app = express();
+
+// Populate DB with sample data
+require('./config/seed');
+
 var server = require('http').createServer(app);
 var socketio = require('socket.io')(server, {
-  serveClient: (config.env === 'production') ? false : true,
+  serveClient: (config.env !== 'production'),
   path: '/socket.io-client'
 });
 require('./config/socketio')(socketio);

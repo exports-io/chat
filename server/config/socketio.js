@@ -15,7 +15,6 @@ function onConnect(socketio, socket) {
   require('../api/chat/chat.socket').register(socketio, socket);
   require('../api/channel/channel.socket').register(socket);
   require('../api/im/im.socket').register(socket);
-  require('../api/thing/thing.socket').register(socket);
 
   socket.on('join', function (room) {
     socket.join(room.SEQ);
