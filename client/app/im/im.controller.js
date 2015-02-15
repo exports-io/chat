@@ -1,10 +1,8 @@
 (function () {
-
   'use strict';
 
   angular.module('chatApp')
     .controller('IMContentCtrl', IMContentCtrl);
-
 
   function IMContentCtrl($scope, $timeout, $stateParams, socket, Chat, ImAPI, UserAPI, ChatAPI, Auth) {
 

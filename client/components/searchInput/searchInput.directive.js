@@ -1,7 +1,11 @@
-'use strict';
+(function () {
 
-angular.module('chatApp')
-  .directive('searchInput', function () {
+  'use strict';
+
+  angular.module('chatApp')
+    .directive('searchInput', searchInput);
+
+  function searchInput() {
     return {
       templateUrl: 'components/searchInput/searchInput.html',
       restrict: 'E',
@@ -25,4 +29,6 @@ angular.module('chatApp')
         };
       }
     };
-  });
+  }
+
+})();

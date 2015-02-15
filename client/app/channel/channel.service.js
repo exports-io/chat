@@ -6,7 +6,6 @@
     .factory('ErrorLog', ErrorLog);
 
   function Chat($http) {
-
     function Chat(user, text, SEQ) {
       this.user = user;
       this.text = text;
@@ -24,7 +23,6 @@
 
 
   function ErrorLog($http) {
-
     function ErrorLog(user, text, SEQ) {
       this.user = user;
       this.text = text;
