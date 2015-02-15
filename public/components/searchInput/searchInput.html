@@ -1,0 +1,8 @@
+<input class="search-input" type="search" placeholder="Search" ng-model="value" required>
+<ul class="search-results" ng-show="searchResults">
+  <li ng-repeat="res in searchResults | limitTo:7">
+    <h5>{{res.user.split(" ")[0]}}</h5><span>{{res.ts | date: 'd/MM h:mm'}}</span>
+
+    <p>{{res.text}}</p>
+  </li>
+</ul>

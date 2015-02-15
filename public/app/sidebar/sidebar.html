@@ -1,0 +1,114 @@
+<div class="page-wrapper">
+
+  <div id="sidebar-wrapper">
+    <ul class="sidebar">
+      <li class="sidebar-header"><a>Exports.io</a></li>
+
+      <li class="sidebar-title">
+        <span>Channels</span><a class="icon-new-channel" ng-click="createNewChannel()"><i class="fa fa-plus"></i></a>
+      </li>
+      <li class="sidebar-list" ng-class="{'active': activeChannel == channel.name}" ng-repeat="channel in channels">
+        <a ng-click="switchChannel(channel)"><span class="channel-hashtag">#</span>{{channel.name}}</a>
+      </li>
+
+      <li class="sidebar-title"><span>Direct Messages</span></li>
+      <li class="sidebar-list" ng-class="{'active': activeChannel == user.username}" ng-repeat="user in users" ng-if="user.SEQ != currentUser.SEQ">
+        <a ng-click="switchIM(user)">
+          <i class="fa fa-circle presence_icon" ng-class="{connected: 'icon-green'}"></i>
+          <span class="im-title">{{user.name}}</span>
+        </a>
+      </li>
+
+      <li class="sidebar-title"><span>Private Groups</span></li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <img class="current-user-avatar" src="http://www.desa-net.com/exports_io/U037BREDX_32.jpg" alt=""/></span>
+      <span class="current-user-name">{{currentUser.username}}</span>
+      <span class="current-user-status"><i class="fa fa-circle presence_icon" ng-class="{connected: 'icon-green'}"></i> online</span>
+
+      <div class="current-user-toggle btn-group dropup" dropdown>
+        <button class="dropdown-toggle"><span class="fa fa-chevron-up"></span></button>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="">Preferences</a></li>
+          <li><a href="">Your Account</a></li>
+          <li><a href="">Your Profile</a></li>
+          <li><a href="">Change your Photo</a></li>
+          <li class="divider"></li>
+          <li><a ng-click="logout()"><i class="fa fa-sign-out"></i> Sign Out</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="row header">
+    <div class="header-title">
+      <span class="page-title-icon">{{activeChatIcon}}</span><span class="page-title">{{activeChatName}}</span>
+      <span class="page-title-active"><i class="fa fa-circle" ng-class="{connected: 'icon-green'}"></i></span>
+    </div>
+  </div>
+  <div class="header-group">
+    <div class="header-search">
+      <form class="search-wrapper">
+        <input class="search-input" type="search" placeholder="Search" ng-model="searchInput" ng-change="querySearch(searchInput)" required>
+      </form>
+      <ul class="search-results" ng-show="searchResults">
+        <li ng-repeat="res in searchResults | limitTo:7">
+          <h5>{{res.user.split(" ")[0]}}</h5><span>{{res.ts | date: 'd/MM h:mm'}}</span>
+
+          <p>{{res.text}}</p>
+        </li>
+      </ul>
+      <!--<search-input ng-model="searchInput" results="searchResults" change="querySearch(value)"></search-input>-->
+    </div>
+    <div class="drawer-toggle">
+      <a ng-click="openDrawer()"><i class="fa fa-angle-left fa-2x drawer-icon" ng-class="{'fa-angle-right drawer-toggle-open': drawerOpen}"></i></a>
+    </div>
+  </div>
+
+  <div class="drawer-container" ng-if="drawerOpen">
+    <h2>Files</h2>
+
+    <p>View and search files - content missing</p>
+  </div>
+
+  <div ui-view="content"></div>
+
+</div>
+
+
+<div ng-controller="ModalInstanceCtrl">
+  <script type="text/ng-template" id="myModalContent.html">
+    <div class="modal-header">
+      <h3 class="modal-title">Create a new Channel</h3>
+    </div>
+    <div class="modal-body">
+
+      <h5 style="text-align: center">This will create a new public channel that anyone on your team can join.</h5>
+
+      <p style="text-align: center">If you need this conversation to be private, create a new Private Group instead.</p>
+
+      <form class="form-horizontal">
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Name</label>
+
+          <div class="col-sm-10">
+            <input type="text" class="form-control" ng-model="newChannel.name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Purpose</label>
+
+          <div class="col-sm-10">
+            <input type="text" class="form-control" ng-model="newChannel.purpose.value">
+          </div>
+        </div>
+
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-default" ng-click="cancel()">Cancel</button>
+      <button class="btn btn-success" ng-click="ok()">Create Channel</button>
+    </div>
+  </script>
+</div>
