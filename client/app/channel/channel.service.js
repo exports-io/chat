@@ -1,25 +1,11 @@
-'use strict';
+(function () {
+  'use strict';
 
-angular.module('chatApp')
+  angular.module('chatApp')
+    .factory('Chat', Chat)
+    .factory('ErrorLog', ErrorLog);
 
-  .service('ChannelAPI', function ($resource) {
-    return $resource('api/channels/:channel', {}, {
-      getAll: {method: 'GET', isArray: true},
-      getWithName: {method: 'GET', isArray: true, params: {channel: '@channel'}},
-      post: {method: 'POST'}
-    })
-  })
-
-  .service('ChatAPI', function ($resource) {
-    return $resource('api/chats/:id/SEQ/:SEQ', {}, {
-      getAll: {method: 'GET', isArray: true},
-      getWithSEQ: {method: 'GET', isArray: true, params: {SEQ: '@SEQ'}},
-      post: {method: 'POST'}
-    })
-  })
-
-
-  .factory('Chat', function ($q, $http) {
+  function Chat($http) {
 
     function Chat(user, text, SEQ) {
       this.user = user;
@@ -34,9 +20,10 @@ angular.module('chatApp')
     };
 
     return Chat;
-  })
+  }
 
-  .factory('ErrorLog', function ($q, $http) {
+
+  function ErrorLog($http) {
 
     function ErrorLog(user, text, SEQ) {
       this.user = user;
@@ -51,5 +38,5 @@ angular.module('chatApp')
     };
 
     return ErrorLog;
-  });
-
+  }
+})();

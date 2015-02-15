@@ -14,20 +14,24 @@
     $scope.isTyping = false;
     $scope.imName = $stateParams.im;
 
+    // retrieve Users w/ username
     UserAPI.getWithUsername({username: $scope.imName}).$promise.then(function (success) {
       var users = [Auth.getCurrentUser().SEQ, success[0].SEQ];
 
+      // retrieve IMs w/ users
       ImAPI.users(users).then(function (result) {
         $scope.thisIM = result.data[0];
 
         socket.socket.emit('join', {SEQ: result.data[0].SEQ});
 
+        // retrieve Chats with IM SEQ room #
         ChatAPI.getWithSEQ({SEQ: result.data[0].SEQ}).$promise.then(function (res) {
           $scope.messages = res;
           socket.syncUpdates('chat', $scope.messages);
         });
 
 
+        // when user is typing emit to others in the room
         $scope.setTyping = function () {
           var obj = {
             user: $scope.currentUser, // TODO: use name and SEQ only
@@ -46,18 +50,13 @@
             return;
           }
 
-          if (timeout) {
-            $timeout.cancel(timeout);
-          }
-
+          // create new Chat model and post to server
           var chat = new Chat(Auth.getCurrentUser().name, $scope.inputText, $scope.thisIM.SEQ); // use
           chat.post().then(function (result) {
-            //console.log(result)
+            $scope.isTyping = false;
+            $scope.inputText = '';
+            $scope.scrollDown = true;
           });
-
-          $scope.isTyping = false;
-          $scope.inputText = '';
-          $scope.scrollDown = true;
         };
 
 
@@ -66,6 +65,7 @@
           $scope.isTyping = true;
           $scope.userTyping = data.user;
 
+          // cancel timeout if still typing
           if (timeout) {
             $timeout.cancel(timeout);
           }
@@ -82,6 +82,7 @@
     });
 
 
+    // when scope is destroyed, leave room and un-sync chats
     $scope.$on('$destroy', function () {
       socket.socket.emit('leave', {SEQ: $scope.thisIM.SEQ});
       socket.unsyncUpdates('chat');

@@ -15,7 +15,23 @@ exports.index = function (req, res) {
 
 // Get a single chat
 exports.show = function (req, res) {
+  console.log('show')
   Chat.find({SEQ: req.params.SEQ}, function (err, chat) {
+    if (err) {
+      return handleError(res, err);
+    }
+    if (!chat) {
+      return res.send(404);
+    }
+    return res.json(chat);
+  });
+};
+
+
+// Get a single chat
+exports.query = function (req, res) {
+  console.log('query')
+  Chat.find({text: {'$regex': req.params.query}}, function (err, chat) {
     if (err) {
       return handleError(res, err);
     }

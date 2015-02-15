@@ -50,8 +50,16 @@
   <div class="header-group">
     <div class="header-search">
       <form class="search-wrapper">
-        <input class="search-input" type="search" placeholder="Search" required>
+        <input class="search-input" type="search" placeholder="Search" ng-model="searchInput" ng-change="querySearch(searchInput)" required>
       </form>
+      <ul class="search-results" ng-show="searchResults">
+        <li ng-repeat="res in searchResults | limitTo:7">
+          <h5>{{res.user.split(" ")[0]}}</h5><span>{{res.ts | date: 'd/MM h:mm'}}</span>
+
+          <p>{{res.text}}</p>
+        </li>
+      </ul>
+      <!--<search-input ng-model="searchInput" results="searchResults" change="querySearch(value)"></search-input>-->
     </div>
     <div class="drawer-toggle">
       <a ng-click="openDrawer()"><i class="fa fa-angle-left fa-2x drawer-icon" ng-class="{'fa-angle-right drawer-toggle-open': drawerOpen}"></i></a>

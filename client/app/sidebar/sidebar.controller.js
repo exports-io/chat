@@ -1,10 +1,16 @@
-'use strict';
+(function () {
 
-angular.module('chatApp')
+  'use strict';
 
-  .controller('SidebarCtrl', function ($scope, $rootScope, $http, $state, $stateParams, $modal, $timeout, socket, Auth, ChannelStore, IMStore) {
+  angular.module('chatApp')
+    .controller('SidebarCtrl', SidebarCtrl)
+    .controller('ModalInstanceCtrl', ModalCtrl);
+
+
+  function SidebarCtrl($scope, $rootScope, $http, $state, $modal, socket, Auth, ChatAPI) {
     $scope.activeChannel = $state.params.im || $state.params.channel || "";
     $scope.drawerOpen = false;
+    $scope.searchInput = '';
 
     $rootScope.currentUser = $scope.currentUser = Auth.getCurrentUser();
 
@@ -18,30 +24,33 @@ angular.module('chatApp')
     });
 
     $scope.switchChannel = function (channel) {
-      ChannelStore.save(channel);
       $state.go('index.channel', {channel: channel.name});
       $scope.activeChannel = channel.name;
-      $scope.activeChatName = channel.name;
-      $scope.activeChatIcon = '#';
-      $scope.activeChatOnline = ''
     };
 
     $scope.switchIM = function (im) {
-      IMStore.save(im);
       $state.transitionTo('index.im', {im: im.username}, {reload: false});
       $scope.activeChannel = im.username;
-      $scope.activeChatIcon = '@';
-      $scope.activeChatOnline = '';
     };
+
+
+    $scope.querySearch = function (query) {
+      $http.get('/api/chats/query/' + query).then(function (results) {
+        $scope.searchResults = results.data;
+      })
+    };
+
 
     $scope.openDrawer = function () {
       $scope.drawerOpen = $scope.drawerOpen ? false : true;
     };
 
+
     $scope.logout = function () {
       Auth.logout();
       $state.go('login');
     };
+
 
     $scope.createNewChannel = function () {
       $scope.modalInstance = $modal.open({
@@ -66,10 +75,9 @@ angular.module('chatApp')
         console.info('Modal dismissed at: ' + new Date());
       });
     };
-  })
+  }
 
-
-  .controller('ModalInstanceCtrl', function ($scope, $rootScope) {
+  function ModalCtrl($scope, $rootScope) {
 
     $scope.newChannel = {
       name: '',
@@ -90,49 +98,6 @@ angular.module('chatApp')
     $scope.cancel = function () {
       $scope.modalInstance.dismiss('cancel');
     };
-  })
+  }
 
-  .factory('ChannelStore', function () {
-    var self = this;
-    var ChannelStore = {};
-
-    ChannelStore.save = function (obj) {
-      self.channel = obj;
-    };
-
-    ChannelStore.get = function () {
-      return self.channel;
-    };
-
-    return ChannelStore;
-  })
-
-  .factory('UserStore', function () {
-    var self = this;
-    var UserStore = {};
-
-    UserStore.save = function (obj) {
-      self.channel = obj;
-    };
-
-    UserStore.get = function () {
-      return self.channel;
-    };
-    return UserStore;
-  })
-
-  .factory('IMStore', function () {
-    var self = this;
-    var IMStore = {};
-
-    IMStore.save = function (obj) {
-      self.channel = obj;
-    };
-
-    IMStore.get = function () {
-      return self.channel;
-    };
-
-    return IMStore;
-  });
-
+})();
