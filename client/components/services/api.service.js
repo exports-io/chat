@@ -12,7 +12,7 @@
       getWithSEQ: {method: 'GET', isArray: true, params: {SEQ: '@SEQ'}},
       query: {method: 'GET', isArray: true, params: {query: '@query'}},
       post: {method: 'POST'}
-    })
+    });
   }
 
   function ChannelAPI($resource) {
@@ -20,7 +20,7 @@
       getAll: {method: 'GET', isArray: true},
       getWithName: {method: 'GET', isArray: true, params: {channel: '@channel'}},
       post: {method: 'POST'}
-    })
+    });
   }
 
   function UserAPI($resource) {
@@ -28,6 +28,7 @@
       getAll: {method: 'GET', isArray: true},
       getWithUsername: {method: 'GET', isArray: true, params: {username: '@username'}},
       post: {method: 'POST'}
-    })
+    });
   }
+
 })();

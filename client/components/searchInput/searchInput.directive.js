@@ -12,22 +12,26 @@
       scope: {
         value: '=ngModel',
         results: '&',
-        change: "&"
+        change: '&'
       },
       link: function (scope, element, attrs) {
 
-        scope.$watch('value', function (v) {
-          scope.change.call(v);
-        })
+        /*
+         scope.$watch('value', function (v) {
+         scope.change.call(v);
+         })
+         */
 
       },
-      controller: function ($scope, $http) {
-        $scope.querySearch = function (query) {
-          $http.get('/api/chats/query/' + query).then(function (results) {
-            $scope.searchResults = results.data;
-          })
-        };
-      }
+      controller: ['$scope', '$http',function ($scope, $http) {
+        /*
+         $scope.querySearch = function (query) {
+         $http.get('/api/chats/query/' + query).then(function (results) {
+         $scope.searchResults = results.data;
+         })
+         };
+         */
+      }]
     };
   }
 

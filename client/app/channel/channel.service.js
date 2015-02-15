@@ -2,10 +2,10 @@
   'use strict';
 
   angular.module('chatApp')
-    .factory('Chat', Chat)
-    .factory('ErrorLog', ErrorLog);
+    .factory('Chat', ChatService)
+    .factory('ErrorLog', ErrorLogService);
 
-  function Chat($http) {
+  function ChatService($http) {
     function Chat(user, text, SEQ) {
       this.user = user;
       this.text = text;
@@ -22,7 +22,7 @@
   }
 
 
-  function ErrorLog($http) {
+  function ErrorLogService($http) {
     function ErrorLog(user, text, SEQ) {
       this.user = user;
       this.text = text;

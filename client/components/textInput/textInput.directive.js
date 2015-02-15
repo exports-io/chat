@@ -16,7 +16,7 @@
         enter: '&',
         isTyping: '=',
         userTyping: '=',
-        ngClass: "="
+        ngClass: '='
       },
       link: function (scope, element, attrs) {
 
@@ -35,7 +35,7 @@
           scope.setTyping.call(v);
         });
 
-        element.bind("keydown", function (event) {
+        element.bind('keydown', function (event) {
 
           if ($textarea[0].offsetHeight >= maxHeight) {
             $textarea.css('overflow-y', 'visible');
@@ -79,18 +79,18 @@
             });
 
             $textarea.css('height', function () {
-              return $textarea.originalHeight
+              return $textarea.originalHeight;
             });
 
             $mainContent.css('height', function () {
-              return $mainContent.originalHeight
+              return $mainContent.originalHeight;
             });
 
             event.preventDefault();
           }
         });
       }
-    }
+    };
   }
 
 })();

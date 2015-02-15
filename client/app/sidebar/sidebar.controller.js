@@ -8,7 +8,7 @@
 
 
   function SidebarCtrl($scope, $rootScope, $http, $state, $modal, socket, Auth, ChatAPI) {
-    $scope.activeChannel = $state.params.im || $state.params.channel || "";
+    $scope.activeChannel = $state.params.im || $state.params.channel || '';
     $scope.drawerOpen = false;
     $scope.searchInput = '';
 
@@ -37,7 +37,7 @@
     $scope.querySearch = function (query) {
       $http.get('/api/chats/query/' + query).then(function (results) {
         $scope.searchResults = results.data;
-      })
+      });
     };
 
 

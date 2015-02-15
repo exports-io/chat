@@ -24,10 +24,9 @@
   }
 
   function channel($q, $stateParams, ChannelAPI) {
-    var channel = $stateParams.channel;
     var q = $q.defer();
-    ChannelAPI.getWithName({channel: channel}).$promise.then(function (success) {
-      q.resolve(success[0])
+    ChannelAPI.getWithName({channel: $stateParams.channel}).$promise.then(function (success) {
+      q.resolve(success[0]);
     });
     return q.promise;
   }
