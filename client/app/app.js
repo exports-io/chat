@@ -8,7 +8,8 @@
     'btford.socket-io',
     'ui.router',
     'ui.bootstrap',
-    'luegg.directives'
+    'luegg.directives',
+    'angular-spinkit'
   ])
     .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
       $urlRouterProvider.when('/', '/messages/general');
@@ -51,17 +52,28 @@
       };
     })
 
-    .run(function ($rootScope, $location, $state, Auth, socket) {
+    .run(function ($rootScope, $location, $timeout, $state, Auth, socket) {
       $rootScope.connectedUsers = [];
+      $rootScope.showLoading = true;
 
+      var timeout;
       $rootScope.$on('$stateChangeStart', function (event, next) {
+        $rootScope.showLoading = true;
+        if (timeout) {
+          $timeout.cancel();
+        }
+        timeout = $timeout(function () {
+          $rootScope.showLoading = false;
+        }, 1100);
+
         Auth.isLoggedInAsync(function (loggedIn) {
           if (next.authenticate && !loggedIn) {
             $location.path('/login');
+            $rootScope.showLoading = false;
           }
         });
-
       });
+
 
       socket.socket.emit('userConnected', Auth.getCurrentUser());
 

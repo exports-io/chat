@@ -33,18 +33,9 @@
       $scope.activeChannel = im.username;
     };
 
-
-    $scope.querySearch = function (query) {
-      $http.get('/api/chats/query/' + query).then(function (results) {
-        $scope.searchResults = results.data;
-      });
-    };
-
-
     $scope.openDrawer = function () {
       $scope.drawerOpen = $scope.drawerOpen ? false : true;
     };
-
 
     $scope.logout = function () {
       Auth.logout();

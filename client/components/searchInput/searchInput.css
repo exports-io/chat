@@ -1,20 +1,23 @@
 
 .search-input {
-  border: 1px solid #a7a7a7;
+  border: 2px solid #a7a7a7;
   min-width: 320px;
   line-height: 20px;
   margin-top: 0px;
   margin-right: 10px;
-  border-radius: 6px;
+  border-radius: 2px;
   padding: 5px 15px;
   vertical-align: text-bottom;
+  -webkit-transition: border 400ms;
+  transition: border 400ms;
 }
-
 
 .search-input:focus,
 .search-input:active {
   outline: none;
-  border: 1px solid #2b3e62;
+  border: 2px solid #2b3e62;
+  -webkit-transition: border 400ms;
+  transition: border 400ms;
 }
 
 div.search-dropdown {
@@ -35,6 +38,7 @@ ul.search-results {
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid #ccc;
+
 }
 
 ul.search-results > li {
@@ -67,7 +71,6 @@ ul.search-results > li p {
   font-size: 14px;
   margin: 0;
 }
-
 
 @media (max-width: 770px) {
   .search-input {

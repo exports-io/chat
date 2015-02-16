@@ -37,3 +37,20 @@
     color: #000;
     padding: 0.2em 0;
 }
+
+
+.loading-page {
+  position: absolute;
+  top:50px;
+  bottom: 68px;
+  left: 220px;
+  right: 0;
+  background-color: #ffffff;
+  z-index: 99999;
+}
+
+
+.loading-page .wandering-cubes-spinner {
+  margin-top: 250px;
+
+}
