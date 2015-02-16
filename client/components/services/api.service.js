@@ -21,7 +21,7 @@
       post: function (data) {
         return $http.post('api/chats/', data);
       }
-    }
+    };
   }
 
   function ChannelAPI($resource) {

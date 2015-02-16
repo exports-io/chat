@@ -35,7 +35,7 @@
 
             _timeout = $timeout(function () {
               _timeout = null;
-              if (v !== undefined && v != '') {
+              if (v !== undefined && v !== '') {
                 ChatAPI.query(v).then(function (results) {
                   scope.searchResults = results.data;
                 });
