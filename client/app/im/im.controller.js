@@ -23,8 +23,8 @@
         socket.socket.emit('join', {SEQ: result.data[0].SEQ});
 
         // retrieve Chats with IM SEQ room #
-        ChatAPI.getWithSEQ({SEQ: result.data[0].SEQ}).$promise.then(function (res) {
-          $scope.messages = res;
+        ChatAPI.getWithSEQ(result.data[0].SEQ).then(function (res) {
+          $scope.messages = res.data;
           socket.syncUpdates('chat', $scope.messages);
         });
 

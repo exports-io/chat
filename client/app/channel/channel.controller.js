@@ -1,5 +1,4 @@
 (function () {
-
   'use strict';
 
   angular.module('chatApp')
@@ -17,13 +16,12 @@
       $scope.thisChannel = success[0];
       socket.socket.emit('join', {SEQ: $scope.thisChannel.SEQ});
 
-      ChatAPI.getWithSEQ({SEQ: success[0].SEQ}).$promise.then(function (results) {
-        $scope.messages = results;
+      ChatAPI.getWithSEQ(success[0].SEQ).then(function (results) {
+        $scope.messages = results.data;
         socket.syncUpdates('chat', $scope.messages); // TODO: need to check what is 'synced' here
 
 
         var timeout = null;
-
         // send message to socket + server
         $scope.sendMessage = function () {
           if ($scope.inputText === '') {

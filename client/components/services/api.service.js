@@ -6,13 +6,22 @@
     .service('ChatAPI', ChatAPI)
     .service('UserAPI', UserAPI);
 
-  function ChatAPI($resource) {
-    return $resource('api/chats/:SEQ:query', {}, {
-      getAll: {method: 'GET', isArray: true},
-      getWithSEQ: {method: 'GET', isArray: true, params: {SEQ: '@SEQ'}},
-      query: {method: 'GET', isArray: true, params: {query: '@query'}},
-      post: {method: 'POST'}
-    });
+  function ChatAPI($http) {
+    return {
+      getAll: function () {
+        return $http.get('api/chats/');
+      },
+      getWithSEQ: function (SEQ) {
+        return $http.get('api/chats/' + SEQ);
+      },
+
+      query: function (query) {
+        return $http.get('api/chats/query/' + query);
+      },
+      post: function (data) {
+        return $http.post('api/chats/', data);
+      }
+    }
   }
 
   function ChannelAPI($resource) {

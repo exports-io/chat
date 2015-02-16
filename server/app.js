@@ -14,8 +14,6 @@ var config = require('./config/environment');
 // Connect to database
 mongoose.connect(config.mongo.uri, config.mongo.options);
 
-
-
 // Setup server
 var app = express();
 

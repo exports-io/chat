@@ -13,11 +13,12 @@
         views: {
           'content@index': {
             templateUrl: 'app/channel/channel-content.html',
-            controller: 'ChannelContentCtrl',
-            resolve: {
-              channel: channel,
-              chat: chat
-            }
+            controller: 'ChannelContentCtrl'
+            /*resolve: {
+             channel: channel,
+             chat: chat
+             }
+             */
           }
         }
       });
