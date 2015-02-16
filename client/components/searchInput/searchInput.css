@@ -43,6 +43,11 @@ ul.search-results {
 
 ul.search-results > li {
   padding: 5px 10px;
+  max-height: 68px;
+  width: 360px;
+  list-style-position: inside;
+  overflow: hidden;
+  text-overflow: ellipsis;
   border-bottom: 1px solid #cdcdcd;
 }
 
@@ -80,4 +85,15 @@ ul.search-results > li p {
   ul.search-results {
     width: 220px;
   }
+}
+
+/*
+  highlight filter
+*/
+
+.ui-match {
+  color: #000000 !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+
 }

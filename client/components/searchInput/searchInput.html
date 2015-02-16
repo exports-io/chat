@@ -7,7 +7,7 @@
       <li ng-repeat="res in searchResults | limitTo:7">
         <h5>{{res.user.split(" ")[0]}}</h5><span>{{res.ts | date: 'd/MM h:mm'}}</span>
 
-        <p>{{res.text}}</p>
+        <p ng-bind-html="res.text | highlight:model"></p>
       </li>
     </ul>
   </div>

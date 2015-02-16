@@ -59,10 +59,13 @@
       var timeout;
       $rootScope.$on('$stateChangeStart', function (event, next) {
         $rootScope.showLoading = true;
+
+        // debounce
         if (timeout) {
-          $timeout.cancel();
+          $timeout.cancel(timeout);
         }
         timeout = $timeout(function () {
+          timeout = null;
           $rootScope.showLoading = false;
         }, 1100);
 
